@@ -8,37 +8,37 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Didact+Gothic&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:wght@300;400;500&family=Cormorant+Garamond:ital,wght@1,300;1,400&display=swap" rel="stylesheet" />
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --purple:       #673de6;
-      --purple-light: #a78bfa;
-      --gold:         #d4af37;
-      --gold-light:   #f0d060;
-      --bg:           #0a0910;
-      --bg2:          #100e1c;
-      --text:         #f5f2ff;
-      --muted:        #9d8fc2;
-      --glass-bg:     rgba(103, 61, 230, 0.08);
-      --glass-border: rgba(167, 139, 250, 0.18);
+      --orange:       #f97316;
+      --orange-deep:  #ea580c;
+      --amber:        #f59e0b;
+      --amber-light:  #fcd34d;
+      --bg:           #0d0905;
+      --bg2:          #130c06;
+      --bg3:          #1a1008;
+      --text:         #fdf4e7;
+      --muted:        #b8976a;
+      --glass-bg:     rgba(249, 115, 22, 0.07);
+      --glass-border: rgba(245, 158, 11, 0.2);
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Didact Gothic', sans-serif;
+      font-family: 'DM Sans', sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.65;
       overflow-x: hidden;
     }
 
-    h1, h2, h3, h4 {
-      font-family: 'Poiret One', sans-serif;
-      letter-spacing: 0.06em;
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
       font-weight: 400;
     }
 
@@ -47,55 +47,51 @@
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 100;
-      padding: 1rem 2.5rem;
+      padding: 1.1rem 2.5rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      transition: background 0.4s, backdrop-filter 0.4s, border-color 0.4s;
+      transition: background 0.5s, border-color 0.5s;
       border-bottom: 1px solid transparent;
     }
     nav.scrolled {
-      background: rgba(10, 9, 16, 0.9);
+      background: rgba(13, 9, 5, 0.92);
       backdrop-filter: blur(24px);
-      border-color: var(--glass-border);
+      border-color: rgba(245,158,11,0.15);
     }
-
     .nav-logo img {
-      height: 48px;
+      height: 46px;
       width: auto;
       display: block;
       filter: brightness(1.1);
     }
-
     .nav-links {
       display: flex;
       gap: 2.5rem;
       list-style: none;
     }
     .nav-links a {
-      color: rgba(245,242,255,0.7);
+      color: rgba(253,244,231,0.65);
       text-decoration: none;
-      font-size: 0.78rem;
-      letter-spacing: 0.18em;
+      font-size: 0.8rem;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       transition: color 0.2s;
     }
     .nav-links a:hover { color: var(--text); }
-
     .nav-cta {
-      background: var(--gold);
-      color: #0a0910;
+      background: var(--orange);
+      color: #0d0905;
       padding: 0.6rem 1.5rem;
-      font-size: 0.74rem;
-      letter-spacing: 0.18em;
+      font-size: 0.76rem;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       text-decoration: none;
-      font-family: 'Didact Gothic', sans-serif;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
       transition: background 0.2s, transform 0.2s;
-      cursor: pointer;
     }
-    .nav-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
-
+    .nav-cta:hover { background: var(--amber); transform: translateY(-1px); }
     .hamburger {
       display: none;
       flex-direction: column;
@@ -105,18 +101,14 @@
       border: none;
       padding: 4px;
     }
-    .hamburger span {
-      display: block; width: 24px; height: 2px;
-      background: var(--text); transition: all 0.3s;
-    }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--text); transition: all 0.3s; }
 
-    /* ── MOBILE OVERLAY ── */
+    /* ── MOBILE NAV ── */
     .mobile-nav {
       display: none;
       flex-direction: column;
       position: fixed; inset: 0;
-      background: rgba(10,9,16,0.97);
-      backdrop-filter: blur(20px);
+      background: rgba(13,9,5,0.98);
       z-index: 99;
       align-items: center;
       justify-content: center;
@@ -124,29 +116,25 @@
     }
     .mobile-nav.open { display: flex; }
     .mobile-nav a {
-      font-family: 'Poiret One', sans-serif;
-      font-size: 2.5rem;
-      letter-spacing: 0.12em;
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
       color: var(--text);
       text-decoration: none;
       transition: color 0.2s;
     }
-    .mobile-nav a:hover { color: var(--gold); }
+    .mobile-nav a:hover { color: var(--amber); }
     .mobile-nav-close {
       position: absolute; top: 1.5rem; right: 2rem;
-      background: none; border: none;
-      color: var(--muted); font-size: 2rem; cursor: pointer;
+      background: none; border: none; color: var(--muted); font-size: 2rem; cursor: pointer;
     }
 
     /* ── HERO ── */
     #hero {
       position: relative;
       height: 100vh;
-      min-height: 640px;
+      min-height: 680px;
       display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
+      align-items: flex-end;
       overflow: hidden;
     }
 
@@ -154,121 +142,148 @@
       position: absolute; inset: 0;
       background: url('https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1920,fit=crop/A85VROz7qKI3QoBE/kiwis_location-13-AQEe4lvel7hZVok6.jpg') center/cover no-repeat;
     }
-    /* warm dark overlay that lets the photo breathe */
     .hero-photo::after {
       content: '';
       position: absolute; inset: 0;
       background:
-        linear-gradient(to bottom, rgba(10,9,16,0.55) 0%, rgba(10,9,16,0.3) 50%, rgba(10,9,16,0.75) 100%);
+        linear-gradient(to top, rgba(13,9,5,1) 0%, rgba(13,9,5,0.55) 45%, rgba(13,9,5,0.1) 100%),
+        linear-gradient(to right, rgba(13,9,5,0.5) 0%, transparent 60%);
+    }
+
+    /* warm amber glow at the bottom */
+    .hero-glow {
+      position: absolute;
+      bottom: -100px; left: 10%;
+      width: 500px; height: 300px;
+      background: radial-gradient(ellipse, rgba(249,115,22,0.18) 0%, transparent 70%);
+      pointer-events: none;
     }
 
     .hero-content {
       position: relative;
       z-index: 2;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 0 1.5rem;
+      padding: 0 2.5rem 5rem;
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
     }
 
     .hero-logo {
-      width: clamp(160px, 28vw, 280px);
-      margin-bottom: 2.2rem;
-      opacity: 0;
-      animation: fadeUp 0.9s ease forwards 0.3s;
-      filter: drop-shadow(0 4px 24px rgba(0,0,0,0.6));
-    }
-
-    .hero-tagline {
-      font-family: 'Didact Gothic', sans-serif;
-      font-size: clamp(0.75rem, 1.4vw, 0.9rem);
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-      color: rgba(245,242,255,0.75);
+      width: clamp(110px, 16vw, 180px);
       margin-bottom: 2.5rem;
       opacity: 0;
-      animation: fadeUp 0.9s ease forwards 0.55s;
+      animation: fadeUp 0.9s ease forwards 0.2s;
+      filter: drop-shadow(0 4px 20px rgba(0,0,0,0.5));
     }
-    .hero-tagline span { color: var(--gold); }
+
+    .hero-eyebrow {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 1.2rem;
+      opacity: 0;
+      animation: fadeUp 0.9s ease forwards 0.35s;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 8vw, 7.5rem);
+      line-height: 1.0;
+      font-weight: 400;
+      margin-bottom: 1.75rem;
+      opacity: 0;
+      animation: fadeUp 0.9s ease forwards 0.5s;
+      max-width: 780px;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--amber);
+    }
+
+    .hero-sub {
+      font-size: clamp(0.9rem, 1.4vw, 1.05rem);
+      color: rgba(253,244,231,0.7);
+      max-width: 440px;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+      line-height: 1.8;
+      opacity: 0;
+      animation: fadeUp 0.9s ease forwards 0.65s;
+    }
 
     .hero-actions {
       display: flex;
       gap: 1rem;
       flex-wrap: wrap;
-      justify-content: center;
       opacity: 0;
-      animation: fadeUp 0.9s ease forwards 0.75s;
+      animation: fadeUp 0.9s ease forwards 0.8s;
     }
 
     .btn-primary {
-      background: var(--gold);
-      color: #0a0910;
-      padding: 0.85rem 2.2rem;
-      font-size: 0.75rem;
-      letter-spacing: 0.18em;
+      background: var(--orange);
+      color: #0d0905;
+      padding: 0.9rem 2.4rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
       text-decoration: none;
-      font-family: 'Didact Gothic', sans-serif;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
       transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
       display: inline-block;
-      cursor: pointer;
     }
     .btn-primary:hover {
-      background: var(--gold-light);
+      background: var(--amber);
       transform: translateY(-2px);
-      box-shadow: 0 8px 28px rgba(212,175,55,0.35);
+      box-shadow: 0 10px 32px rgba(249,115,22,0.35);
     }
-
     .btn-ghost {
-      border: 1px solid rgba(245,242,255,0.35);
+      border: 1px solid rgba(253,244,231,0.3);
       color: var(--text);
-      padding: 0.85rem 2.2rem;
-      font-size: 0.75rem;
-      letter-spacing: 0.18em;
+      padding: 0.9rem 2.4rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
       text-decoration: none;
-      font-family: 'Didact Gothic', sans-serif;
+      font-family: 'DM Sans', sans-serif;
       transition: border-color 0.2s, background 0.2s, transform 0.2s;
       display: inline-block;
-      background: rgba(10,9,16,0.3);
-      backdrop-filter: blur(10px);
+      background: rgba(13,9,5,0.3);
+      backdrop-filter: blur(8px);
     }
     .btn-ghost:hover {
-      border-color: var(--purple-light);
-      background: rgba(103,61,230,0.2);
+      border-color: var(--amber);
+      background: rgba(249,115,22,0.1);
       transform: translateY(-2px);
     }
 
-    .scroll-hint {
+    .hero-scroll {
       position: absolute;
-      bottom: 2.5rem; left: 50%;
-      transform: translateX(-50%);
-      display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
-      color: rgba(245,242,255,0.5);
-      font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase;
-      opacity: 0;
-      animation: fadeUp 0.9s ease forwards 1s;
+      bottom: 2.5rem; right: 2.5rem;
+      display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+      color: rgba(253,244,231,0.4);
+      font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase;
       z-index: 2;
+      opacity: 0;
+      animation: fadeUp 0.9s ease forwards 1.1s;
     }
     .scroll-line {
-      width: 1px; height: 38px;
-      background: linear-gradient(to bottom, rgba(212,175,55,0.8), transparent);
-      animation: scrollPulse 2.2s ease-in-out infinite;
+      width: 1px; height: 48px;
+      background: linear-gradient(to bottom, var(--amber), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
     }
-    @keyframes scrollPulse {
-      0%,100% { opacity: 0.3; }
-      50% { opacity: 1; }
-    }
-
+    @keyframes scrollPulse { 0%,100% { opacity: 0.3; } 50% { opacity: 1; } }
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
+      from { opacity: 0; transform: translateY(22px); }
       to   { opacity: 1; transform: translateY(0); }
     }
 
     /* ── STRIP ── */
     .strip {
-      background: var(--purple);
-      padding: 0.9rem 0;
+      background: var(--orange);
+      padding: 0.85rem 0;
       overflow: hidden;
       white-space: nowrap;
     }
@@ -279,53 +294,90 @@
     }
     .strip-item {
       font-size: 0.7rem;
-      letter-spacing: 0.22em;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.85);
+      color: rgba(13,9,5,0.85);
+      font-weight: 500;
       flex-shrink: 0;
     }
-    .strip-dot { color: var(--gold); }
-    @keyframes marquee {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); }
-    }
+    .strip-dot { color: rgba(13,9,5,0.4); }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-    /* ── SHARED LAYOUT ── */
+    /* ── SHARED ── */
     .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
     section { position: relative; z-index: 1; }
 
     .section-label {
       font-size: 0.68rem;
-      letter-spacing: 0.32em;
+      letter-spacing: 0.3em;
       text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 0.7rem;
+      color: var(--amber);
+      margin-bottom: 0.8rem;
+      font-family: 'DM Sans', sans-serif;
     }
-    .section-title {
-      font-size: clamp(2rem, 4.5vw, 3.2rem);
-      line-height: 1.1;
-      margin-bottom: 1.2rem;
-    }
-    .section-body {
-      color: var(--muted);
-      font-size: 0.95rem;
-      line-height: 1.85;
-      max-width: 520px;
-    }
+    .section-title { font-size: clamp(2rem, 4vw, 3rem); line-height: 1.15; margin-bottom: 1.2rem; }
+    .section-body { color: var(--muted); font-size: 0.95rem; line-height: 1.9; max-width: 480px; font-weight: 300; }
 
     .reveal {
       opacity: 0; transform: translateY(28px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
+      transition: opacity 0.75s ease, transform 0.75s ease;
     }
     .reveal.visible { opacity: 1; transform: translateY(0); }
     .reveal-delay-1 { transition-delay: 0.1s; }
     .reveal-delay-2 { transition-delay: 0.2s; }
     .reveal-delay-3 { transition-delay: 0.3s; }
 
+    /* ── EMOTION PULL-QUOTE ── */
+    #pullquote {
+      padding: 7rem 0;
+      background: var(--bg2);
+      text-align: center;
+      overflow: hidden;
+      position: relative;
+    }
+    #pullquote::before {
+      content: '"';
+      position: absolute;
+      top: -2rem; left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Playfair Display', serif;
+      font-size: 22rem;
+      color: rgba(249,115,22,0.04);
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+    }
+    .pq-inner {
+      position: relative;
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    .pq-text {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+      line-height: 1.45;
+      color: var(--text);
+      margin-bottom: 1.5rem;
+    }
+    .pq-text em { color: var(--amber); font-style: normal; }
+    .pq-line {
+      width: 48px; height: 2px;
+      background: var(--orange);
+      margin: 0 auto 1.25rem;
+    }
+    .pq-source {
+      font-size: 0.72rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
     /* ── ABOUT ── */
     #about {
       padding: 7rem 0;
-      background: var(--bg2);
+      background: var(--bg);
     }
     .about-grid {
       display: grid;
@@ -333,79 +385,83 @@
       gap: 5rem;
       align-items: center;
     }
-
-    /* photo collage */
     .photo-collage {
       position: relative;
-      height: 520px;
+      height: 540px;
     }
     .collage-main {
       position: absolute;
       top: 0; left: 0;
-      width: 72%;
-      height: 82%;
-      object-fit: cover;
-      display: block;
+      width: 73%; height: 80%;
+      object-fit: cover; display: block;
     }
     .collage-accent {
       position: absolute;
       bottom: 0; right: 0;
-      width: 52%;
-      height: 54%;
-      object-fit: cover;
-      display: block;
-      border: 4px solid var(--bg2);
+      width: 52%; height: 54%;
+      object-fit: cover; display: block;
+      border: 5px solid var(--bg);
     }
-    /* gold corner bracket */
-    .collage-bracket {
+    .collage-badge {
       position: absolute;
-      bottom: 2rem; left: -1rem;
-      width: 50px; height: 50px;
-      border-bottom: 2px solid var(--gold);
-      border-left: 2px solid var(--gold);
-      pointer-events: none;
+      bottom: 4rem; left: -1.5rem;
+      background: var(--orange);
+      color: #0d0905;
+      padding: 1rem 1.25rem;
+      text-align: center;
+      z-index: 2;
+    }
+    .collage-badge strong {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      line-height: 1;
+    }
+    .collage-badge span {
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 500;
     }
 
-    .about-quote {
-      font-family: 'Cormorant Garamond', serif;
+    .about-text {}
+    .about-intro {
+      font-family: 'Playfair Display', serif;
       font-style: italic;
-      font-size: 1.55rem;
-      line-height: 1.55;
-      color: var(--text);
-      margin: 1.75rem 0;
-      padding-left: 1.5rem;
-      border-left: 2px solid var(--purple);
+      font-size: 1.2rem;
+      color: var(--amber);
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
     }
     .about-stats {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
+      gap: 1px;
+      background: var(--glass-border);
       margin-top: 2.5rem;
     }
     .stat {
-      padding: 1.25rem 1rem;
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
+      background: var(--bg);
+      padding: 1.5rem 1rem;
       text-align: center;
     }
     .stat-number {
-      font-family: 'Poiret One', sans-serif;
-      font-size: 2rem;
-      letter-spacing: 0.08em;
-      color: var(--gold);
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      color: var(--orange);
       display: block;
+      line-height: 1;
+      margin-bottom: 0.4rem;
     }
     .stat-label {
       font-size: 0.65rem;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
       color: var(--muted);
-      margin-top: 0.2rem;
     }
 
-    /* ── FOOD GALLERY ── */
+    /* ── GALLERY ── */
     #gallery {
-      padding: 0;
       background: var(--bg);
     }
     .gallery-grid {
@@ -414,53 +470,53 @@
       grid-template-rows: 280px 280px;
       gap: 3px;
     }
-    .gallery-item {
-      overflow: hidden;
-      position: relative;
-      cursor: default;
-    }
+    .gallery-item { overflow: hidden; position: relative; }
     .gallery-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
       transition: transform 0.6s ease;
-      filter: brightness(0.9) saturate(1.05);
+      filter: brightness(0.88) saturate(1.1);
     }
-    .gallery-item:hover img { transform: scale(1.06); filter: brightness(1) saturate(1.1); }
-
-    /* first item spans 2 rows */
-    .gallery-item.tall {
-      grid-row: span 2;
-    }
-    /* second item spans 2 cols */
-    .gallery-item.wide {
-      grid-column: span 2;
-    }
-
-    /* label on hover */
+    .gallery-item:hover img { transform: scale(1.07); filter: brightness(1) saturate(1.15); }
+    .gallery-item.tall { grid-row: span 2; }
+    .gallery-item.wide { grid-column: span 2; }
     .gallery-item .overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(10,9,16,0.8) 0%, transparent 50%);
-      opacity: 0;
-      transition: opacity 0.3s;
-      display: flex;
-      align-items: flex-end;
-      padding: 1.25rem;
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(13,9,5,0.85) 0%, transparent 55%);
+      opacity: 0; transition: opacity 0.3s;
+      display: flex; align-items: flex-end; padding: 1.25rem;
     }
     .gallery-item:hover .overlay { opacity: 1; }
     .gallery-item .overlay span {
-      font-size: 0.7rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gold);
+      font-size: 0.68rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--amber);
+    }
+
+    /* ── BIG EMOTION TEXT ── */
+    #bigtext {
+      padding: 5rem 0;
+      background: var(--bg2);
+      overflow: hidden;
+    }
+    .big-line {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 7vw, 6.5rem);
+      color: rgba(253,244,231,0.06);
+      white-space: nowrap;
+      line-height: 1.1;
+      animation: scrollText 18s linear infinite;
+      display: block;
+    }
+    .big-line.reverse { animation-direction: reverse; animation-duration: 22s; color: rgba(249,115,22,0.05); }
+    @keyframes scrollText {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-33.33%); }
     }
 
     /* ── SERVICES ── */
     #services {
       padding: 7rem 0;
-      background: var(--bg2);
+      background: var(--bg);
     }
     .services-intro {
       display: grid;
@@ -470,31 +526,28 @@
       margin-bottom: 4rem;
     }
     .services-photo {
-      position: relative;
+      height: 440px;
       overflow: hidden;
-      height: 420px;
+      position: relative;
     }
     .services-photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
       filter: brightness(0.85) saturate(1.1);
     }
     .services-photo::after {
       content: '';
       position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(103,61,230,0.25) 0%, transparent 60%);
+      background: linear-gradient(to bottom right, rgba(249,115,22,0.15) 0%, transparent 60%);
     }
-
     .services-cards {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1px;
-      background: var(--glass-border);
+      background: rgba(245,158,11,0.12);
     }
     .service-card {
-      background: var(--bg2);
+      background: var(--bg);
       padding: 3rem 2.2rem;
       position: relative;
       overflow: hidden;
@@ -502,29 +555,20 @@
     }
     .service-card::after {
       content: '';
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 2px;
-      background: var(--gold);
-      transform: scaleX(0);
-      transition: transform 0.4s ease;
-      transform-origin: left;
+      position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+      background: var(--orange);
+      transform: scaleX(0); transition: transform 0.4s ease; transform-origin: left;
     }
-    .service-card:hover { background: var(--bg); }
+    .service-card:hover { background: var(--bg2); }
     .service-card:hover::after { transform: scaleX(1); }
-
-    .service-icon {
-      width: 44px; height: 44px;
-      color: var(--gold);
-      margin-bottom: 1.5rem;
-    }
+    .service-icon { width: 42px; height: 42px; color: var(--amber); margin-bottom: 1.5rem; }
     .service-card h3 { font-size: 1.45rem; margin-bottom: 0.85rem; }
-    .service-card p { color: var(--muted); font-size: 0.88rem; line-height: 1.8; }
+    .service-card p { color: var(--muted); font-size: 0.88rem; line-height: 1.85; font-weight: 300; }
 
     /* ── MENU ── */
     #menu {
       padding: 7rem 0;
-      background: var(--bg);
+      background: var(--bg2);
     }
     .menu-layout {
       display: grid;
@@ -534,69 +578,43 @@
     }
     .menu-photo-stack {
       position: relative;
-      height: 580px;
+      height: 600px;
     }
-    .menu-photo-stack img {
-      position: absolute;
-      object-fit: cover;
-      display: block;
-    }
-    .menu-photo-stack .mp-back {
-      top: 0; left: 0;
-      width: 80%; height: 72%;
-    }
-    .menu-photo-stack .mp-front {
-      bottom: 0; right: 0;
-      width: 65%; height: 55%;
-      border: 4px solid var(--bg);
-    }
-    .menu-photo-stack .mp-small {
-      top: 55%; left: 0;
-      width: 34%; height: 34%;
-      border: 3px solid var(--bg);
-    }
+    .menu-photo-stack img { position: absolute; object-fit: cover; display: block; }
+    .menu-photo-stack .mp-back  { top: 0; left: 0; width: 80%; height: 72%; }
+    .menu-photo-stack .mp-front { bottom: 0; right: 0; width: 64%; height: 55%; border: 5px solid var(--bg2); }
+    .menu-photo-stack .mp-small { top: 54%; left: 0; width: 33%; height: 33%; border: 4px solid var(--bg2); }
 
-    .menu-content {}
-    .menu-category { margin-bottom: 3rem; }
     .menu-cat-title {
-      font-family: 'Poiret One', sans-serif;
-      font-size: 0.85rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.72rem;
       letter-spacing: 0.28em;
       text-transform: uppercase;
-      color: var(--gold);
+      color: var(--amber);
       margin-bottom: 1.25rem;
-      padding-bottom: 0.6rem;
-      border-bottom: 1px solid var(--glass-border);
+      padding-bottom: 0.65rem;
+      border-bottom: 1px solid rgba(245,158,11,0.18);
     }
+    .menu-category { margin-bottom: 2.75rem; }
     .menu-item {
       display: flex;
       justify-content: space-between;
       align-items: baseline;
       gap: 1rem;
       padding: 0.9rem 0;
-      border-bottom: 1px solid rgba(167,139,250,0.06);
+      border-bottom: 1px solid rgba(245,158,11,0.07);
       transition: padding-left 0.25s;
     }
     .menu-item:hover { padding-left: 0.5rem; }
-    .menu-item-name { font-size: 0.9rem; margin-bottom: 0.2rem; }
-    .menu-item-desc { font-size: 0.75rem; color: var(--muted); }
-    .menu-item-price {
-      color: var(--gold);
-      font-size: 0.85rem;
-      letter-spacing: 0.08em;
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
-    .menu-footnote {
-      margin-top: 0.75rem;
-      font-size: 0.73rem;
-      color: rgba(157,143,194,0.6);
-    }
+    .menu-item-name { font-size: 0.92rem; margin-bottom: 0.2rem; }
+    .menu-item-desc { font-size: 0.75rem; color: var(--muted); font-weight: 300; }
+    .menu-item-price { color: var(--orange); font-size: 0.88rem; letter-spacing: 0.06em; white-space: nowrap; flex-shrink: 0; }
+    .menu-footnote { margin-top: 0.75rem; font-size: 0.73rem; color: rgba(184,151,106,0.5); }
 
     /* ── EVENTS ── */
     #events {
       padding: 7rem 0;
-      background: var(--bg2);
+      background: var(--bg);
     }
     .events-layout {
       display: grid;
@@ -605,53 +623,43 @@
       align-items: center;
     }
     .events-cards {
-      display: flex;
-      flex-direction: column;
-      gap: 1px;
-      background: var(--glass-border);
+      display: flex; flex-direction: column;
+      gap: 1px; background: rgba(245,158,11,0.12);
     }
     .event-card {
-      background: var(--bg2);
+      background: var(--bg);
       padding: 2.25rem 2rem;
-      display: flex;
-      gap: 1.5rem;
-      align-items: flex-start;
+      display: flex; gap: 1.5rem; align-items: flex-start;
       transition: background 0.3s;
     }
-    .event-card:hover { background: var(--bg); }
+    .event-card:hover { background: var(--bg2); }
     .event-num {
-      font-family: 'Poiret One', sans-serif;
+      font-family: 'Playfair Display', serif;
       font-size: 2.2rem;
-      color: var(--purple-light);
-      opacity: 0.35;
-      line-height: 1;
-      flex-shrink: 0;
-      width: 2.5rem;
+      color: var(--orange);
+      opacity: 0.25;
+      line-height: 1; flex-shrink: 0; width: 2.5rem;
     }
     .event-card h3 { font-size: 1.15rem; margin-bottom: 0.5rem; }
-    .event-card p { font-size: 0.86rem; color: var(--muted); line-height: 1.8; }
-
+    .event-card p { font-size: 0.87rem; color: var(--muted); line-height: 1.85; font-weight: 300; }
     .events-photo {
-      position: relative;
-      height: 460px;
-      overflow: hidden;
+      height: 460px; overflow: hidden; position: relative;
     }
     .events-photo img {
       width: 100%; height: 100%;
-      object-fit: cover;
-      display: block;
+      object-fit: cover; display: block;
       filter: brightness(0.8) saturate(1.1);
     }
     .events-photo::after {
       content: '';
       position: absolute; inset: 0;
-      background: linear-gradient(to bottom left, rgba(103,61,230,0.2) 0%, transparent 60%);
+      background: linear-gradient(to top left, rgba(249,115,22,0.2) 0%, transparent 55%);
     }
 
     /* ── HOURS + CONTACT ── */
     #hours {
       padding: 7rem 0;
-      background: var(--bg);
+      background: var(--bg2);
     }
     .hours-grid {
       display: grid;
@@ -661,98 +669,77 @@
     }
     .hours-table { margin-top: 2rem; }
     .hours-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      display: flex; justify-content: space-between; align-items: center;
       padding: 1rem 0;
-      border-bottom: 1px solid rgba(167,139,250,0.08);
+      border-bottom: 1px solid rgba(245,158,11,0.08);
     }
-    .hours-day {
-      font-size: 0.8rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-    .hours-time { font-size: 0.85rem; }
+    .hours-day { font-size: 0.82rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 300; }
+    .hours-time { font-size: 0.88rem; }
     .badge {
       display: inline-block;
-      font-size: 0.58rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
+      font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase;
       padding: 0.18rem 0.55rem;
-      background: rgba(212,175,55,0.1);
-      border: 1px solid rgba(212,175,55,0.25);
-      color: var(--gold);
+      background: rgba(249,115,22,0.12);
+      border: 1px solid rgba(249,115,22,0.28);
+      color: var(--orange);
       margin-left: 0.65rem;
     }
-    .kitchen-note {
-      margin-top: 1.25rem;
-      font-size: 0.72rem;
-      color: rgba(157,143,194,0.6);
-      letter-spacing: 0.06em;
-    }
+    .kitchen-note { margin-top: 1.25rem; font-size: 0.72rem; color: rgba(184,151,106,0.5); }
 
     .contact-card {
       padding: 2.75rem;
       background: var(--glass-bg);
       border: 1px solid var(--glass-border);
-      backdrop-filter: blur(12px);
     }
     .contact-card h3 { font-size: 1.75rem; margin-bottom: 2rem; }
-    .contact-item {
-      display: flex; gap: 1rem; align-items: flex-start;
-      margin-bottom: 1.75rem;
-    }
-    .ci-icon {
-      width: 18px; height: 18px;
-      color: var(--gold); flex-shrink: 0; margin-top: 3px;
-    }
-    .ci-label {
-      font-size: 0.63rem; letter-spacing: 0.2em;
-      text-transform: uppercase; color: var(--muted); margin-bottom: 0.2rem;
-    }
-    .ci-value { font-size: 0.9rem; }
+    .contact-item { display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 1.75rem; }
+    .ci-icon { width: 18px; height: 18px; color: var(--amber); flex-shrink: 0; margin-top: 3px; }
+    .ci-label { font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.2rem; }
+    .ci-value { font-size: 0.9rem; font-weight: 300; }
     .ci-value a { color: var(--text); text-decoration: none; transition: color 0.2s; }
-    .ci-value a:hover { color: var(--gold); }
-
+    .ci-value a:hover { color: var(--amber); }
     .social-row { display: flex; gap: 0.75rem; margin-top: 2rem; }
     .social-link {
       width: 40px; height: 40px;
-      border: 1px solid var(--glass-border);
+      border: 1px solid rgba(245,158,11,0.2);
       display: flex; align-items: center; justify-content: center;
       text-decoration: none; color: var(--muted);
       transition: border-color 0.2s, color 0.2s, background 0.2s;
     }
     .social-link:hover {
-      border-color: var(--purple-light);
-      color: var(--text);
-      background: rgba(103,61,230,0.12);
+      border-color: var(--amber); color: var(--text);
+      background: rgba(249,115,22,0.1);
     }
     .social-link svg { width: 17px; height: 17px; }
 
     /* ── RESERVE CTA ── */
     #reserve {
-      padding: 8rem 0;
-      background: var(--bg2);
+      padding: 9rem 0;
       text-align: center;
       position: relative;
       overflow: hidden;
     }
-    #reserve .bg-photo {
+    .reserve-bg {
       position: absolute; inset: 0;
       background: url('https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1440,fit=crop/A85VROz7qKI3QoBE/kiwis_location-04-AQEe4lvelGtZGDRE.jpg') center/cover no-repeat;
-      opacity: 0.12;
+    }
+    .reserve-bg::after {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        rgba(13,9,5,0.82),
+        linear-gradient(to top, rgba(249,115,22,0.12) 0%, transparent 60%);
     }
     #reserve .container { position: relative; z-index: 1; }
-    #reserve .section-title { max-width: 600px; margin: 0.75rem auto 1.25rem; }
+    #reserve .section-title { max-width: 600px; margin: 0.75rem auto 1.25rem; font-size: clamp(2rem, 4vw, 3.2rem); }
     #reserve .section-body { margin: 0 auto 3rem; text-align: center; }
     .reserve-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
 
     /* ── FOOTER ── */
     footer {
-      background: #050410;
+      background: #080604;
       padding: 4rem 0 2rem;
-      border-top: 1px solid var(--glass-border);
+      border-top: 1px solid rgba(245,158,11,0.12);
     }
     .footer-grid {
       display: grid;
@@ -760,49 +747,42 @@
       gap: 3rem;
       margin-bottom: 3rem;
     }
-    .footer-logo img { height: 44px; margin-bottom: 1rem; filter: brightness(1.1); }
-    .footer-logo p { font-size: 0.82rem; color: var(--muted); line-height: 1.8; max-width: 220px; }
-    .footer-col h4 {
-      font-size: 0.68rem; letter-spacing: 0.24em;
-      text-transform: uppercase; color: var(--muted); margin-bottom: 1.2rem;
-    }
+    .footer-logo img { height: 42px; margin-bottom: 1rem; }
+    .footer-logo p { font-size: 0.82rem; color: var(--muted); line-height: 1.85; font-weight: 300; max-width: 200px; }
+    .footer-col h4 { font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.2rem; }
     .footer-col ul { list-style: none; }
     .footer-col ul li { margin-bottom: 0.55rem; }
-    .footer-col ul li a {
-      font-size: 0.85rem; color: var(--muted);
-      text-decoration: none; transition: color 0.2s;
-    }
+    .footer-col ul li a { font-size: 0.85rem; color: rgba(184,151,106,0.7); text-decoration: none; transition: color 0.2s; font-weight: 300; }
     .footer-col ul li a:hover { color: var(--text); }
     .footer-bottom {
-      border-top: 1px solid rgba(167,139,250,0.07);
+      border-top: 1px solid rgba(245,158,11,0.07);
       padding-top: 1.5rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      display: flex; justify-content: space-between; align-items: center;
       flex-wrap: wrap; gap: 0.75rem;
     }
-    .footer-copy { font-size: 0.72rem; color: rgba(157,143,194,0.55); letter-spacing: 0.06em; }
+    .footer-copy { font-size: 0.72rem; color: rgba(184,151,106,0.4); letter-spacing: 0.06em; }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 960px) {
       .nav-links, .nav-cta { display: none; }
       .hamburger { display: flex; }
       .about-grid, .services-intro, .menu-layout, .events-layout, .hours-grid { grid-template-columns: 1fr; gap: 3rem; }
-      .photo-collage, .menu-photo-stack, .services-photo, .events-photo { height: 320px; }
+      .photo-collage, .services-photo, .events-photo { height: 340px; }
+      .menu-photo-stack { height: 340px; }
       .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(3, 220px); }
       .gallery-item.tall { grid-row: span 1; }
       .gallery-item.wide { grid-column: span 2; }
       .services-cards { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: 1fr 1fr; }
-      .about-stats { grid-template-columns: repeat(3, 1fr); }
     }
     @media (max-width: 560px) {
       .gallery-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
-      .gallery-item.wide { grid-column: span 1; }
       .gallery-item { height: 220px; }
+      .gallery-item.wide { grid-column: span 1; }
       .footer-grid { grid-template-columns: 1fr; }
-      .about-stats { grid-template-columns: repeat(3, 1fr); }
       .menu-photo-stack { display: none; }
+      .collage-badge { left: 0; }
+      .big-line { font-size: 2.4rem; }
     }
   </style>
 </head>
@@ -816,14 +796,13 @@
     <a href="#menu"     onclick="closeMob()">Speisekarte</a>
     <a href="#events"   onclick="closeMob()">Events</a>
     <a href="#hours"    onclick="closeMob()">Kontakt</a>
-    <a href="tel:+4969210098790" onclick="closeMob()" style="color:var(--gold);font-size:1.4rem;">Reservieren</a>
+    <a href="tel:+4969210098790" onclick="closeMob()" style="color:var(--amber);">Reservieren</a>
   </div>
 
   <!-- NAV -->
   <nav id="navbar">
     <a href="#" class="nav-logo">
-      <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,fit=crop/A85VROz7qKI3QoBE/kiwis_logo-A85VRxyXynIKkqQK.png"
-           alt="KIWIS Frankfurt" />
+      <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,fit=crop/A85VROz7qKI3QoBE/kiwis_logo-A85VRxyXynIKkqQK.png" alt="KIWIS Frankfurt" />
     </a>
     <ul class="nav-links">
       <li><a href="#about">Über uns</a></li>
@@ -841,48 +820,62 @@
   <!-- HERO -->
   <section id="hero">
     <div class="hero-photo"></div>
+    <div class="hero-glow"></div>
     <div class="hero-content">
       <img class="hero-logo"
            src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,fit=crop/A85VROz7qKI3QoBE/kiwis_logo-A85VRxyXynIKkqQK.png"
            alt="KIWIS Frankfurt" />
-      <p class="hero-tagline">Restaurant <span>·</span> Bar <span>·</span> Events</p>
+      <p class="hero-eyebrow">Frankfurt am Main · Schillerstraße 10</p>
+      <h1 class="hero-title">Wo Frankfurt<br><em>lebendig</em> wird.</h1>
+      <p class="hero-sub">Restaurant, Bar und Events – geöffnet von morgens bis tief in die Nacht. Komm wie du bist. Geh wie nie zuvor.</p>
       <div class="hero-actions">
         <a href="tel:+4969210098790" class="btn-primary">Tisch reservieren</a>
         <a href="#menu" class="btn-ghost">Speisekarte</a>
       </div>
     </div>
-    <div class="scroll-hint">
+    <div class="hero-scroll">
       <div class="scroll-line"></div>
-      <span>Entdecken</span>
+      <span>Scroll</span>
     </div>
   </section>
 
   <!-- STRIP -->
   <div class="strip">
     <div class="strip-inner">
-      <span class="strip-item">Restaurant</span><span class="strip-dot"> ✦ </span>
-      <span class="strip-item">Bar</span><span class="strip-dot"> ✦ </span>
-      <span class="strip-item">Events</span><span class="strip-dot"> ✦ </span>
-      <span class="strip-item">Cocktails</span><span class="strip-dot"> ✦ </span>
-      <span class="strip-item">Frühstück bis Mitternacht</span><span class="strip-dot"> ✦ </span>
-      <span class="strip-item">Frankfurt Innenstadt</span><span class="strip-dot"> ✦ </span>
-      <span class="strip-item">Täglich ab 10:00</span><span class="strip-dot"> ✦ </span>
-      <span class="strip-item">Restaurant</span><span class="strip-dot"> ✦ </span>
-      <span class="strip-item">Bar</span><span class="strip-dot"> ✦ </span>
-      <span class="strip-item">Events</span><span class="strip-dot"> ✦ </span>
-      <span class="strip-item">Cocktails</span><span class="strip-dot"> ✦ </span>
-      <span class="strip-item">Frühstück bis Mitternacht</span><span class="strip-dot"> ✦ </span>
-      <span class="strip-item">Frankfurt Innenstadt</span><span class="strip-dot"> ✦ </span>
-      <span class="strip-item">Täglich ab 10:00</span><span class="strip-dot"> ✦ </span>
+      <span class="strip-item">Restaurant</span><span class="strip-dot"> · </span>
+      <span class="strip-item">Bar</span><span class="strip-dot"> · </span>
+      <span class="strip-item">Events</span><span class="strip-dot"> · </span>
+      <span class="strip-item">Cocktails</span><span class="strip-dot"> · </span>
+      <span class="strip-item">Frühstück bis Mitternacht</span><span class="strip-dot"> · </span>
+      <span class="strip-item">Frankfurt Innenstadt</span><span class="strip-dot"> · </span>
+      <span class="strip-item">Täglich ab 10:00</span><span class="strip-dot"> · </span>
+      <span class="strip-item">Restaurant</span><span class="strip-dot"> · </span>
+      <span class="strip-item">Bar</span><span class="strip-dot"> · </span>
+      <span class="strip-item">Events</span><span class="strip-dot"> · </span>
+      <span class="strip-item">Cocktails</span><span class="strip-dot"> · </span>
+      <span class="strip-item">Frühstück bis Mitternacht</span><span class="strip-dot"> · </span>
+      <span class="strip-item">Frankfurt Innenstadt</span><span class="strip-dot"> · </span>
+      <span class="strip-item">Täglich ab 10:00</span><span class="strip-dot"> · </span>
     </div>
   </div>
+
+  <!-- PULL QUOTE -->
+  <section id="pullquote">
+    <div class="pq-inner">
+      <p class="pq-text reveal">
+        "Gutes Essen ist mehr als Nahrung –<br>
+        es ist <em>Erinnerung</em>, Verbindung und<br>
+        der Grund, warum man wiederkommt."
+      </p>
+      <div class="pq-line reveal"></div>
+      <p class="pq-source reveal">Das KIWIS Versprechen</p>
+    </div>
+  </section>
 
   <!-- ABOUT -->
   <section id="about">
     <div class="container">
       <div class="about-grid">
-
-        <!-- photo collage -->
         <div class="photo-collage reveal">
           <img class="collage-main"
                src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1024,fit=crop/A85VROz7qKI3QoBE/_dsc6153-BKyc41zMyBmHimIt.jpg"
@@ -890,17 +883,16 @@
           <img class="collage-accent"
                src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=768,fit=crop/A85VROz7qKI3QoBE/pink_pornstar-1-96w7Z9l7IZRatSiA.jpg"
                alt="KIWIS Cocktail" loading="lazy" />
-          <div class="collage-bracket"></div>
+          <div class="collage-badge">
+            <strong>10+</strong>
+            <span>Cocktails</span>
+          </div>
         </div>
-
-        <!-- text -->
         <div class="reveal reveal-delay-1">
           <p class="section-label">Über KIWIS</p>
-          <h2 class="section-title">Mehr als ein<br>Restaurant</h2>
-          <blockquote class="about-quote">
-            "Gute Vibes und Urlaubsatmosphäre – mitten im Herzen Frankfurts."
-          </blockquote>
-          <p class="section-body">Zwischen Börse und Zeil, in der Schillerstraße 10, ist KIWIS mehr als ein Ort zum Essen. Wir verbinden moderne Küche, handgefertigte Cocktails und ein Flair, das den Alltag vergessen lässt – von morgens bis tief in die Nacht.</p>
+          <h2 class="section-title">Ein Ort, den<br>Frankfurt liebt.</h2>
+          <p class="about-intro">Zwischen Börse und Zeil – wo Frankfurt frühstückt, feiert und die Nacht vergisst.</p>
+          <p class="section-body">KIWIS ist kein gewöhnliches Restaurant. Es ist der Ort, an dem Geschäftsessen zu Freundschaften werden, Dates zu unvergesslichen Abenden und gewöhnliche Dienstage zu Momenten, über die man noch Jahre später spricht.</p>
           <div class="about-stats">
             <div class="stat reveal reveal-delay-1">
               <span class="stat-number">17h</span>
@@ -911,57 +903,49 @@
               <span class="stat-label">Konzepte</span>
             </div>
             <div class="stat reveal reveal-delay-3">
-              <span class="stat-number">10+</span>
-              <span class="stat-label">Cocktails</span>
+              <span class="stat-number">∞</span>
+              <span class="stat-label">Gute Abende</span>
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- FOOD GALLERY -->
+  <!-- GALLERY -->
   <section id="gallery">
     <div class="gallery-grid">
-
       <div class="gallery-item tall reveal">
-        <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1024,fit=crop/A85VROz7qKI3QoBE/_dsc6407-X6EgaCdandDul09W.jpg"
-             alt="KIWIS Speisen" loading="lazy" />
+        <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1024,fit=crop/A85VROz7qKI3QoBE/_dsc6407-X6EgaCdandDul09W.jpg" alt="KIWIS Speisen" loading="lazy" />
         <div class="overlay"><span>Küche</span></div>
       </div>
-
       <div class="gallery-item reveal reveal-delay-1">
-        <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=768,fit=crop/A85VROz7qKI3QoBE/_dsc1431-E5HKwvWlCSvfOAJa.jpg"
-             alt="KIWIS Food" loading="lazy" />
+        <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=768,fit=crop/A85VROz7qKI3QoBE/_dsc1431-E5HKwvWlCSvfOAJa.jpg" alt="KIWIS Food" loading="lazy" />
         <div class="overlay"><span>Genuss</span></div>
       </div>
-
       <div class="gallery-item reveal reveal-delay-2">
-        <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=768,fit=crop/A85VROz7qKI3QoBE/_dsc1435-rumvNvXSzWOZaCQ1.jpg"
-             alt="KIWIS Food" loading="lazy" />
+        <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=768,fit=crop/A85VROz7qKI3QoBE/_dsc1435-rumvNvXSzWOZaCQ1.jpg" alt="KIWIS Food" loading="lazy" />
         <div class="overlay"><span>Frisch</span></div>
       </div>
-
       <div class="gallery-item reveal reveal-delay-1">
-        <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=768,fit=crop/A85VROz7qKI3QoBE/_dsc1438-UP9GBYK1rXB3qSqr.jpg"
-             alt="KIWIS Food" loading="lazy" />
+        <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=768,fit=crop/A85VROz7qKI3QoBE/_dsc1438-UP9GBYK1rXB3qSqr.jpg" alt="KIWIS Food" loading="lazy" />
         <div class="overlay"><span>Kreativ</span></div>
       </div>
-
       <div class="gallery-item wide reveal reveal-delay-2">
-        <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1440,fit=crop/A85VROz7qKI3QoBE/_dsc6215-Ud9D53hCvaAT7cII.jpg"
-             alt="KIWIS Bar" loading="lazy" />
+        <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1440,fit=crop/A85VROz7qKI3QoBE/_dsc6215-Ud9D53hCvaAT7cII.jpg" alt="KIWIS Bar" loading="lazy" />
         <div class="overlay"><span>Bar &amp; Cocktails</span></div>
       </div>
-
       <div class="gallery-item reveal reveal-delay-3">
-        <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=768,fit=crop/A85VROz7qKI3QoBE/_dsc1440-r1331JhK4NXOve7g.jpg"
-             alt="KIWIS Food" loading="lazy" />
+        <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=768,fit=crop/A85VROz7qKI3QoBE/_dsc1440-r1331JhK4NXOve7g.jpg" alt="KIWIS Food" loading="lazy" />
         <div class="overlay"><span>Highlights</span></div>
       </div>
-
     </div>
+  </section>
+
+  <!-- BIG SCROLLING TEXT -->
+  <section id="bigtext" aria-hidden="true">
+    <div class="big-line">Gut essen &nbsp;&nbsp; Gut trinken &nbsp;&nbsp; Gut fühlen &nbsp;&nbsp; Gut essen &nbsp;&nbsp; Gut trinken &nbsp;&nbsp; Gut fühlen &nbsp;&nbsp; Gut essen &nbsp;&nbsp; Gut trinken &nbsp;&nbsp; Gut fühlen</div>
+    <div class="big-line reverse">Frankfurt &nbsp;&nbsp; Schillerstraße &nbsp;&nbsp; Restaurant &nbsp;&nbsp; Bar &nbsp;&nbsp; Events &nbsp;&nbsp; Frankfurt &nbsp;&nbsp; Schillerstraße &nbsp;&nbsp; Restaurant &nbsp;&nbsp; Bar &nbsp;&nbsp; Events</div>
   </section>
 
   <!-- SERVICES -->
@@ -970,36 +954,28 @@
       <div class="services-intro">
         <div class="reveal">
           <p class="section-label">Was wir bieten</p>
-          <h2 class="section-title">Drei Erlebnisse,<br>ein Ort</h2>
-          <p class="section-body">KIWIS vereint modernes Restaurant, lebendige Bar und vielseitigen Eventbereich unter einem Dach – und das täglich bis tief in die Nacht.</p>
+          <h2 class="section-title">Drei Erlebnisse,<br>ein Ort.</h2>
+          <p class="section-body">Morgens Frühstück mit Freunden. Mittags ein schnelles Lunch. Abends Cocktails, die die Nacht vergessen lassen. KIWIS ist immer das Richtige.</p>
         </div>
         <div class="services-photo reveal reveal-delay-1">
-          <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1024,fit=crop/A85VROz7qKI3QoBE/_dsc6444-btSmxOsxqaBFBU4O.jpg"
-               alt="KIWIS Frankfurt" loading="lazy" />
+          <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1024,fit=crop/A85VROz7qKI3QoBE/_dsc6444-btSmxOsxqaBFBU4O.jpg" alt="KIWIS Frankfurt" loading="lazy" />
         </div>
       </div>
-
       <div class="services-cards">
         <div class="service-card reveal">
-          <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 8.25v-1.5m0 1.5c-1.355 0-2.697.056-4.024.166C6.845 8.51 6 9.473 6 10.608v2.513m6-4.871c1.355 0 2.697.056 4.024.166C17.155 8.51 18 9.473 18 10.608v2.513M15 20.488l-.023.032A1.5 1.5 0 0113.5 21h-3a1.5 1.5 0 01-1.477-1.48L9 20.488m6 0a48.667 48.667 0 01-6 0m6 0v-2.625c0-.621-.504-1.125-1.125-1.125H10.125c-.621 0-1.125.504-1.125 1.125v2.625M3.75 10.5h16.5" />
-          </svg>
+          <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8.25v-1.5m0 1.5c-1.355 0-2.697.056-4.024.166C6.845 8.51 6 9.473 6 10.608v2.513m6-4.871c1.355 0 2.697.056 4.024.166C17.155 8.51 18 9.473 18 10.608v2.513M15 20.488l-.023.032A1.5 1.5 0 0113.5 21h-3a1.5 1.5 0 01-1.477-1.48L9 20.488m6 0a48.667 48.667 0 01-6 0m6 0v-2.625c0-.621-.504-1.125-1.125-1.125H10.125c-.621 0-1.125.504-1.125 1.125v2.625M3.75 10.5h16.5" /></svg>
           <h3>Restaurant</h3>
-          <p>Moderne Küche mit saisonalen Zutaten. Frühstück, Mittagstisch und Dinner in stilvollem Ambiente. Küche täglich bis 02:00 Uhr.</p>
+          <p>Saisonale Küche, die man schmeckt und fühlt. Von Sonnenaufgang bis Mitternacht – frisch, ehrlich und mit Liebe gemacht.</p>
         </div>
         <div class="service-card reveal reveal-delay-1">
-          <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714a2.25 2.25 0 001.5 2.121m-6 0a2.25 2.25 0 004.5 0m-4.5 0H6.375a1.875 1.875 0 01-1.875-1.875v-1.5C4.5 7.284 6.75 6 9.75 3.104z" />
-          </svg>
+          <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714a2.25 2.25 0 001.5 2.121m-6 0a2.25 2.25 0 004.5 0m-4.5 0H6.375a1.875 1.875 0 01-1.875-1.875v-1.5C4.5 7.284 6.75 6 9.75 3.104z" /></svg>
           <h3>Bar</h3>
-          <p>Handgefertigte Cocktails, exzellente Weine und eine Bar-Atmosphäre, die Frankfurt so nicht kennt. Von entspannt bis ausgelassen.</p>
+          <p>Jeder Cocktail erzählt eine Geschichte. Handgemacht, eigensinnig und genau richtig für den Abend, den du brauchst.</p>
         </div>
         <div class="service-card reveal reveal-delay-2">
-          <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
-          </svg>
+          <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" /></svg>
           <h3>Events</h3>
-          <p>Private Feiern, Firmenevents und besondere Anlässe. Flexible Bereiche, individuelles Catering und ein Team, das mitdenkt.</p>
+          <p>Dein Geburtstag. Eure Feier. Ihr Firmenevent. Wir sorgen dafür, dass der Abend genau so wird, wie du ihn dir vorstellst.</p>
         </div>
       </div>
     </div>
@@ -1010,24 +986,14 @@
     <div class="container">
       <div style="margin-bottom:3.5rem;" class="reveal">
         <p class="section-label">Kulinarik</p>
-        <h2 class="section-title">Unsere Highlights</h2>
+        <h2 class="section-title">Was uns<br>besonders macht.</h2>
       </div>
       <div class="menu-layout">
-
-        <!-- photo stack -->
         <div class="menu-photo-stack reveal">
-          <img class="mp-back"
-               src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1024,fit=crop/A85VROz7qKI3QoBE/_dsc1444-RSh4yEKsHpYmHnMB.jpg"
-               alt="KIWIS Essen" loading="lazy" />
-          <img class="mp-front"
-               src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=768,fit=crop/A85VROz7qKI3QoBE/_dsc1449-VfEN7Rn359X52A1N.jpg"
-               alt="KIWIS Essen" loading="lazy" />
-          <img class="mp-small"
-               src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,fit=crop/A85VROz7qKI3QoBE/_dsc1445-xat46lseYear07oj.jpg"
-               alt="KIWIS Essen" loading="lazy" />
+          <img class="mp-back"  src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1024,fit=crop/A85VROz7qKI3QoBE/_dsc1444-RSh4yEKsHpYmHnMB.jpg" alt="KIWIS Essen" loading="lazy" />
+          <img class="mp-front" src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=768,fit=crop/A85VROz7qKI3QoBE/_dsc1449-VfEN7Rn359X52A1N.jpg"  alt="KIWIS Essen" loading="lazy" />
+          <img class="mp-small" src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,fit=crop/A85VROz7qKI3QoBE/_dsc1445-xat46lseYear07oj.jpg" alt="KIWIS Essen" loading="lazy" />
         </div>
-
-        <!-- menu items -->
         <div class="reveal reveal-delay-1">
           <div class="menu-category">
             <p class="menu-cat-title">Frühstück &amp; Brunch</p>
@@ -1065,7 +1031,6 @@
           </div>
           <p class="menu-footnote">Vollständige Speise- und Getränkekarte vor Ort oder auf Anfrage.</p>
         </div>
-
       </div>
     </div>
   </section>
@@ -1074,40 +1039,36 @@
   <section id="events">
     <div class="container">
       <div class="events-layout">
-
         <div>
           <p class="section-label reveal">Veranstaltungen</p>
-          <h2 class="section-title reveal">KIWIS für<br>besondere Momente</h2>
+          <h2 class="section-title reveal">Feiert mit uns.<br>Unvergesslich.</h2>
           <div class="events-cards">
             <div class="event-card reveal">
               <span class="event-num">01</span>
               <div>
                 <h3>Private Feiern</h3>
-                <p>Geburtstage, Jubiläen, Reunions. Exklusive Bereiche für Gruppen ab 10 Personen mit individuellem Catering.</p>
+                <p>Geburtstage, Jubiläen, Zusammenkünfte. Exklusive Bereiche für Gruppen ab 10 Personen – individuell und herzlich.</p>
               </div>
             </div>
             <div class="event-card reveal reveal-delay-1">
               <span class="event-num">02</span>
               <div>
                 <h3>Firmenevents</h3>
-                <p>Business Lunches, After-Work-Gatherings und Firmenveranstaltungen. Flexible Raumkonzepte bis 80 Gäste.</p>
+                <p>Business Lunches, After-Work und Teamevents. Flexible Räume, professioneller Service – bis zu 80 Gäste.</p>
               </div>
             </div>
             <div class="event-card reveal reveal-delay-2">
               <span class="event-num">03</span>
               <div>
                 <h3>Special Nights</h3>
-                <p>Themenabende, Live-Musik und exklusive Cocktail-Tastings. Folgen Sie uns auf Instagram für Updates.</p>
+                <p>Live-Musik, Themenabende, Cocktail-Tastings. Wir machen den Dienstag zum Highlight der Woche.</p>
               </div>
             </div>
           </div>
         </div>
-
         <div class="events-photo reveal reveal-delay-1">
-          <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1024,fit=crop/A85VROz7qKI3QoBE/_dsc7511-daQNs5qEgfOmLwOW.jpg"
-               alt="KIWIS Events" loading="lazy" />
+          <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1024,fit=crop/A85VROz7qKI3QoBE/_dsc7511-daQNs5qEgfOmLwOW.jpg" alt="KIWIS Events" loading="lazy" />
         </div>
-
       </div>
     </div>
   </section>
@@ -1118,7 +1079,7 @@
       <div class="hours-grid">
         <div>
           <p class="section-label reveal">Öffnungszeiten</p>
-          <h2 class="section-title reveal">Wir sind<br>für Sie da</h2>
+          <h2 class="section-title reveal">Wir sind<br>für dich da.</h2>
           <div class="hours-table">
             <div class="hours-row reveal">
               <span class="hours-day">Mo – Do</span>
@@ -1135,9 +1096,8 @@
           </div>
           <p class="kitchen-note reveal">Küche täglich bis 02:00 Uhr geöffnet.</p>
         </div>
-
         <div class="contact-card reveal">
-          <h3>Besuchen Sie uns</h3>
+          <h3>Komm vorbei.</h3>
           <div class="contact-item">
             <svg class="ci-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
             <div>
@@ -1180,14 +1140,14 @@
 
   <!-- RESERVE CTA -->
   <section id="reserve">
-    <div class="bg-photo"></div>
+    <div class="reserve-bg"></div>
     <div class="container">
       <p class="section-label reveal">Reservierung</p>
-      <h2 class="section-title reveal">Bereit für einen<br>besonderen Abend?</h2>
-      <p class="section-body reveal">Reservieren Sie Ihren Tisch per Telefon oder E-Mail.<br>Für Gruppen ab 10 Personen erstellen wir gerne ein individuelles Angebot.</p>
+      <h2 class="section-title reveal">Hunger? Durst?<br>Wir sind bereit.</h2>
+      <p class="section-body reveal">Ruf einfach an oder schreib uns. Für besondere Anlässe und Gruppen ab 10 Personen machen wir alles möglich.</p>
       <div class="reserve-actions reveal">
         <a href="tel:+4969210098790" class="btn-primary">069 – 21 00 98 79</a>
-        <a href="mailto:info@kiwis-frankfurt.de" class="btn-ghost">Per E-Mail anfragen</a>
+        <a href="mailto:info@kiwis-frankfurt.de" class="btn-ghost">Per E-Mail</a>
       </div>
     </div>
   </section>
@@ -1197,8 +1157,7 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-logo">
-          <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,fit=crop/A85VROz7qKI3QoBE/kiwis_logo-A85VRxyXynIKkqQK.png"
-               alt="KIWIS Frankfurt" />
+          <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,fit=crop/A85VROz7qKI3QoBE/kiwis_logo-A85VRxyXynIKkqQK.png" alt="KIWIS Frankfurt" />
           <p>Restaurant · Bar · Events<br>im Herzen Frankfurts.<br>Täglich ab 10 Uhr geöffnet.</p>
         </div>
         <div class="footer-col">
@@ -1235,34 +1194,20 @@
   </footer>
 
   <script>
-    // Nav scroll
     const nav = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 50);
-    }, { passive: true });
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 50), { passive: true });
 
-    // Mobile nav
-    document.getElementById('hamburger').addEventListener('click', () => {
-      document.getElementById('mobileNav').classList.add('open');
-    });
-    document.getElementById('mobileNavClose').addEventListener('click', () => {
-      document.getElementById('mobileNav').classList.remove('open');
-    });
+    document.getElementById('hamburger').addEventListener('click', () => document.getElementById('mobileNav').classList.add('open'));
+    document.getElementById('mobileNavClose').addEventListener('click', () => document.getElementById('mobileNav').classList.remove('open'));
     function closeMob() { document.getElementById('mobileNav').classList.remove('open'); }
 
-    // Scroll reveal
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
-      });
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
     }, { threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // Reduced motion
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      document.querySelectorAll('.reveal').forEach(el => {
-        el.style.opacity = '1'; el.style.transform = 'none'; el.style.transition = 'none';
-      });
+      document.querySelectorAll('.reveal').forEach(el => { el.style.opacity='1'; el.style.transform='none'; el.style.transition='none'; });
     }
   </script>
 </body>
