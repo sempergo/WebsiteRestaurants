@@ -6,7 +6,6 @@
   <title>KIWIS Frankfurt – Restaurant · Bar · Events</title>
   <meta name="description" content="KIWIS Frankfurt – Modern Restaurant, Bar und Events im Herzen Frankfurts. Schillerstraße 10. Täglich geöffnet bis in die frühen Morgenstunden." />
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Didact+Gothic&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet" />
@@ -15,80 +14,66 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --purple:      #7c3aed;
-      --purple-light:#a78bfa;
-      --purple-dark: #2e1065;
-      --gold:        #d4af37;
-      --gold-light:  #f0d060;
-      --bg:          #08070f;
-      --bg2:         #0e0c1a;
-      --bg3:         #13102a;
-      --text:        #f0eeff;
-      --muted:       #9d8fc2;
-      --glass-bg:    rgba(124, 58, 237, 0.08);
-      --glass-border:rgba(167, 139, 250, 0.15);
+      --purple:       #673de6;
+      --purple-light: #a78bfa;
+      --gold:         #d4af37;
+      --gold-light:   #f0d060;
+      --bg:           #0a0910;
+      --bg2:          #100e1c;
+      --text:         #f5f2ff;
+      --muted:        #9d8fc2;
+      --glass-bg:     rgba(103, 61, 230, 0.08);
+      --glass-border: rgba(167, 139, 250, 0.18);
     }
 
     html { scroll-behavior: smooth; }
 
     body {
       font-family: 'Didact Gothic', sans-serif;
-      background-color: var(--bg);
+      background: var(--bg);
       color: var(--text);
-      line-height: 1.6;
+      line-height: 1.65;
       overflow-x: hidden;
     }
 
     h1, h2, h3, h4 {
       font-family: 'Poiret One', sans-serif;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.06em;
       font-weight: 400;
     }
 
-    /* ─── NOISE TEXTURE OVERLAY ─── */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 0;
-      opacity: 0.4;
-    }
-
-    /* ─── NAV ─── */
+    /* ── NAV ── */
     nav {
       position: fixed;
-      top: 0;
-      width: 100%;
+      top: 0; left: 0; right: 0;
       z-index: 100;
-      padding: 1.25rem 2rem;
+      padding: 1rem 2.5rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      transition: background 0.4s, backdrop-filter 0.4s;
+      transition: background 0.4s, backdrop-filter 0.4s, border-color 0.4s;
+      border-bottom: 1px solid transparent;
     }
     nav.scrolled {
-      background: rgba(8, 7, 15, 0.85);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--glass-border);
+      background: rgba(10, 9, 16, 0.9);
+      backdrop-filter: blur(24px);
+      border-color: var(--glass-border);
     }
-    .nav-logo {
-      font-family: 'Poiret One', sans-serif;
-      font-size: 1.6rem;
-      letter-spacing: 0.25em;
-      color: var(--text);
-      text-decoration: none;
-      text-transform: uppercase;
+
+    .nav-logo img {
+      height: 48px;
+      width: auto;
+      display: block;
+      filter: brightness(1.1);
     }
-    .nav-logo span { color: var(--gold); }
+
     .nav-links {
       display: flex;
       gap: 2.5rem;
       list-style: none;
     }
     .nav-links a {
-      color: var(--muted);
+      color: rgba(245,242,255,0.7);
       text-decoration: none;
       font-size: 0.78rem;
       letter-spacing: 0.18em;
@@ -96,20 +81,21 @@
       transition: color 0.2s;
     }
     .nav-links a:hover { color: var(--text); }
+
     .nav-cta {
       background: var(--gold);
-      color: #08070f;
-      padding: 0.55rem 1.4rem;
-      font-size: 0.75rem;
+      color: #0a0910;
+      padding: 0.6rem 1.5rem;
+      font-size: 0.74rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
       text-decoration: none;
-      transition: background 0.2s, transform 0.2s;
       font-family: 'Didact Gothic', sans-serif;
+      transition: background 0.2s, transform 0.2s;
+      cursor: pointer;
     }
     .nav-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
 
-    /* hamburger – mobile only */
     .hamburger {
       display: none;
       flex-direction: column;
@@ -120,816 +106,16 @@
       padding: 4px;
     }
     .hamburger span {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background: var(--text);
-      transition: all 0.3s;
+      display: block; width: 24px; height: 2px;
+      background: var(--text); transition: all 0.3s;
     }
 
-    /* ─── HERO ─── */
-    #hero {
-      position: relative;
-      height: 100vh;
-      min-height: 650px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      overflow: hidden;
-    }
-
-    /* animated gradient bg */
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 80% 60% at 30% 40%, rgba(124,58,237,0.35) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 50% at 75% 65%, rgba(46,16,101,0.5) 0%, transparent 55%),
-        radial-gradient(ellipse 50% 40% at 60% 20%, rgba(212,175,55,0.12) 0%, transparent 50%),
-        var(--bg);
-      animation: heroShift 12s ease-in-out infinite alternate;
-    }
-    @keyframes heroShift {
-      0%   { background-position: 0% 0%; filter: hue-rotate(0deg); }
-      100% { background-position: 100% 100%; filter: hue-rotate(15deg); }
-    }
-
-    /* grid lines */
-    .hero-grid {
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(167,139,250,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(167,139,250,0.04) 1px, transparent 1px);
-      background-size: 60px 60px;
-    }
-
-    /* decorative circles */
-    .hero-circle-1 {
-      position: absolute;
-      width: 600px;
-      height: 600px;
-      border: 1px solid rgba(124,58,237,0.15);
-      border-radius: 50%;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      animation: rotateSlow 30s linear infinite;
-    }
-    .hero-circle-2 {
-      position: absolute;
-      width: 400px;
-      height: 400px;
-      border: 1px solid rgba(212,175,55,0.1);
-      border-radius: 50%;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      animation: rotateSlow 20s linear infinite reverse;
-    }
-    @keyframes rotateSlow {
-      to { transform: translate(-50%, -50%) rotate(360deg); }
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 800px;
-      padding: 0 2rem;
-    }
-
-    .hero-eyebrow {
-      font-size: 0.72rem;
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1.5rem;
-      opacity: 0;
-      animation: fadeUp 0.8s ease forwards 0.3s;
-    }
-
-    .hero-title {
-      font-family: 'Poiret One', sans-serif;
-      font-size: clamp(4rem, 12vw, 9rem);
-      letter-spacing: 0.25em;
-      line-height: 0.9;
-      margin-bottom: 1.5rem;
-      opacity: 0;
-      animation: fadeUp 0.8s ease forwards 0.5s;
-    }
-    .hero-title .dot { color: var(--gold); }
-
-    .hero-tagline {
-      font-size: clamp(0.8rem, 1.5vw, 1rem);
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 3rem;
-      opacity: 0;
-      animation: fadeUp 0.8s ease forwards 0.7s;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
-      opacity: 0;
-      animation: fadeUp 0.8s ease forwards 0.9s;
-    }
-
-    .btn-primary {
-      background: var(--gold);
-      color: #08070f;
-      padding: 0.85rem 2.2rem;
-      font-size: 0.75rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      text-decoration: none;
-      font-family: 'Didact Gothic', sans-serif;
-      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
-      display: inline-block;
-    }
-    .btn-primary:hover {
-      background: var(--gold-light);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(212,175,55,0.3);
-    }
-
-    .btn-ghost {
-      border: 1px solid var(--glass-border);
-      color: var(--text);
-      padding: 0.85rem 2.2rem;
-      font-size: 0.75rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      text-decoration: none;
-      font-family: 'Didact Gothic', sans-serif;
-      transition: border-color 0.2s, background 0.2s, transform 0.2s;
-      display: inline-block;
-      background: var(--glass-bg);
-      backdrop-filter: blur(10px);
-    }
-    .btn-ghost:hover {
-      border-color: var(--purple-light);
-      background: rgba(124,58,237,0.15);
-      transform: translateY(-2px);
-    }
-
-    /* scroll indicator */
-    .scroll-hint {
-      position: absolute;
-      bottom: 2.5rem;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.4rem;
-      color: var(--muted);
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      opacity: 0;
-      animation: fadeUp 0.8s ease forwards 1.2s;
-      z-index: 2;
-    }
-    .scroll-line {
-      width: 1px;
-      height: 40px;
-      background: linear-gradient(to bottom, var(--purple-light), transparent);
-      animation: scrollPulse 2s ease-in-out infinite;
-    }
-    @keyframes scrollPulse {
-      0%, 100% { opacity: 0.3; transform: scaleY(1); }
-      50% { opacity: 1; transform: scaleY(1.2); }
-    }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ─── SECTION BASE ─── */
-    section {
-      position: relative;
-      z-index: 1;
-    }
-
-    .section-label {
-      font-size: 0.68rem;
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 0.75rem;
-    }
-
-    .section-title {
-      font-size: clamp(2rem, 5vw, 3.5rem);
-      line-height: 1.1;
-      margin-bottom: 1.25rem;
-    }
-
-    .section-subtitle {
-      color: var(--muted);
-      font-size: 0.95rem;
-      line-height: 1.8;
-      max-width: 540px;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-
-    /* ─── STRIP / MARQUEE ─── */
-    .strip {
-      background: var(--purple);
-      padding: 1rem 0;
-      overflow: hidden;
-      white-space: nowrap;
-    }
-    .strip-inner {
-      display: inline-flex;
-      gap: 3rem;
-      animation: marquee 20s linear infinite;
-    }
-    .strip-item {
-      font-size: 0.72rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.85);
-      flex-shrink: 0;
-    }
-    .strip-dot {
-      color: var(--gold);
-    }
-    @keyframes marquee {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); }
-    }
-
-    /* ─── ABOUT ─── */
-    #about {
-      padding: 7rem 0;
-      background: var(--bg2);
-    }
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-      align-items: center;
-    }
-    .about-visual {
-      position: relative;
-    }
-    .about-card {
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
-      backdrop-filter: blur(20px);
-      padding: 3rem;
-      position: relative;
-    }
-    .about-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 60px;
-      height: 60px;
-      border-top: 2px solid var(--gold);
-      border-left: 2px solid var(--gold);
-    }
-    .about-card::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      width: 60px;
-      height: 60px;
-      border-bottom: 2px solid var(--purple);
-      border-right: 2px solid var(--purple);
-    }
-    .about-quote {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-size: 1.6rem;
-      line-height: 1.5;
-      color: var(--text);
-      margin-bottom: 1.5rem;
-    }
-    .about-quote-author {
-      font-size: 0.72rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gold);
-    }
-    .about-stats {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-      margin-top: 2rem;
-    }
-    .stat {
-      padding: 1.5rem;
-      background: rgba(124,58,237,0.06);
-      border: 1px solid var(--glass-border);
-      text-align: center;
-    }
-    .stat-number {
-      font-family: 'Poiret One', sans-serif;
-      font-size: 2.5rem;
-      letter-spacing: 0.1em;
-      color: var(--gold);
-      display: block;
-    }
-    .stat-label {
-      font-size: 0.7rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-top: 0.25rem;
-    }
-
-    /* ─── SERVICES ─── */
-    #services {
-      padding: 7rem 0;
-      background: var(--bg);
-    }
-    .services-header {
-      text-align: center;
-      margin-bottom: 4rem;
-    }
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5px;
-      background: var(--glass-border);
-    }
-    .service-card {
-      background: var(--bg);
-      padding: 3.5rem 2.5rem;
-      position: relative;
-      overflow: hidden;
-      cursor: default;
-      transition: background 0.3s;
-    }
-    .service-card::before {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: var(--gold);
-      transform: scaleX(0);
-      transition: transform 0.4s ease;
-      transform-origin: left;
-    }
-    .service-card:hover::before { transform: scaleX(1); }
-    .service-card:hover { background: var(--bg2); }
-
-    .service-icon {
-      width: 48px;
-      height: 48px;
-      margin-bottom: 1.75rem;
-      color: var(--gold);
-    }
-    .service-card h3 {
-      font-size: 1.5rem;
-      letter-spacing: 0.1em;
-      margin-bottom: 1rem;
-    }
-    .service-card p {
-      color: var(--muted);
-      font-size: 0.9rem;
-      line-height: 1.8;
-    }
-
-    /* ─── MENU ─── */
-    #menu {
-      padding: 7rem 0;
-      background: var(--bg2);
-    }
-    .menu-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-    }
-    .menu-category {
-      position: relative;
-    }
-    .menu-category-title {
-      font-family: 'Poiret One', sans-serif;
-      font-size: 1.1rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 2rem;
-      padding-bottom: 0.75rem;
-      border-bottom: 1px solid var(--glass-border);
-    }
-    .menu-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      padding: 1rem 0;
-      border-bottom: 1px solid rgba(167,139,250,0.06);
-      gap: 1rem;
-      transition: padding-left 0.2s;
-      cursor: default;
-    }
-    .menu-item:hover { padding-left: 0.5rem; }
-    .menu-item-info {}
-    .menu-item-name {
-      font-size: 0.9rem;
-      letter-spacing: 0.05em;
-      margin-bottom: 0.2rem;
-    }
-    .menu-item-desc {
-      font-size: 0.75rem;
-      color: var(--muted);
-    }
-    .menu-item-price {
-      color: var(--gold);
-      font-size: 0.85rem;
-      letter-spacing: 0.1em;
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
-    .menu-note {
-      margin-top: 2rem;
-      font-size: 0.75rem;
-      color: var(--muted);
-      letter-spacing: 0.08em;
-    }
-    .menu-cta {
-      margin-top: 3rem;
-      text-align: center;
-    }
-
-    /* ─── ATMOSPHERE ─── */
-    #atmosphere {
-      padding: 7rem 0;
-      background: var(--bg);
-    }
-    .atmosphere-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      margin-bottom: 3rem;
-    }
-    .atmosphere-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
-      grid-template-rows: auto auto;
-      gap: 1.5px;
-      background: var(--glass-border);
-    }
-    .atm-card {
-      background: var(--bg3);
-      padding: 3rem 2.5rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      min-height: 260px;
-      position: relative;
-      overflow: hidden;
-    }
-    .atm-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(8,7,15,0.9) 0%, transparent 60%);
-    }
-    .atm-card.large {
-      grid-row: span 2;
-      min-height: 520px;
-    }
-    /* placeholder gradient backgrounds to simulate photos */
-    .atm-card:nth-child(1) { background: linear-gradient(135deg, #1a0a35 0%, #3d1a6b 50%, #1a0a35 100%); }
-    .atm-card:nth-child(2) { background: linear-gradient(135deg, #0f0a20 0%, #2d1a5c 60%, #0f0a20 100%); }
-    .atm-card:nth-child(3) { background: linear-gradient(135deg, #1c1000 0%, #4a3500 50%, #1c1000 100%); }
-    .atm-card:nth-child(4) { background: linear-gradient(135deg, #080520 0%, #1e0a45 60%, #080520 100%); }
-    .atm-card:nth-child(5) { background: linear-gradient(135deg, #0d0c00 0%, #3d3000 50%, #0d0c00 100%); }
-
-    .atm-content {
-      position: relative;
-      z-index: 1;
-    }
-    .atm-tag {
-      font-size: 0.65rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 0.5rem;
-    }
-    .atm-title {
-      font-family: 'Poiret One', sans-serif;
-      font-size: 1.4rem;
-      letter-spacing: 0.08em;
-    }
-
-    /* floating decor shapes inside cards */
-    .atm-card .shape {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(40px);
-      pointer-events: none;
-    }
-    .atm-card:nth-child(1) .shape-1 { width: 200px; height: 200px; background: rgba(124,58,237,0.4); top: 20%; right: 10%; }
-    .atm-card:nth-child(1) .shape-2 { width: 150px; height: 150px; background: rgba(212,175,55,0.15); bottom: 30%; left: 15%; }
-    .atm-card:nth-child(3) .shape-1 { width: 120px; height: 120px; background: rgba(212,175,55,0.25); top: 20%; left: 20%; }
-
-    /* ─── HOURS ─── */
-    #hours {
-      padding: 7rem 0;
-      background: var(--bg2);
-    }
-    .hours-layout {
-      display: grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap: 6rem;
-      align-items: start;
-    }
-    .hours-table {
-      margin-top: 2rem;
-    }
-    .hours-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 0;
-      border-bottom: 1px solid rgba(167,139,250,0.08);
-    }
-    .hours-row:first-child { padding-top: 0; }
-    .hours-day {
-      font-size: 0.8rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-    .hours-time {
-      font-size: 0.85rem;
-      color: var(--text);
-      letter-spacing: 0.05em;
-    }
-    .hours-badge {
-      display: inline-block;
-      font-size: 0.6rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      padding: 0.2rem 0.6rem;
-      background: rgba(212,175,55,0.12);
-      border: 1px solid rgba(212,175,55,0.25);
-      color: var(--gold);
-      margin-left: 0.75rem;
-    }
-    .kitchen-note {
-      margin-top: 1.25rem;
-      font-size: 0.72rem;
-      color: var(--muted);
-      letter-spacing: 0.08em;
-    }
-    .contact-block {
-      padding: 3rem;
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
-      backdrop-filter: blur(12px);
-    }
-    .contact-block h3 {
-      font-size: 1.8rem;
-      margin-bottom: 2rem;
-    }
-    .contact-item {
-      display: flex;
-      gap: 1rem;
-      align-items: flex-start;
-      margin-bottom: 1.75rem;
-    }
-    .contact-icon {
-      width: 20px;
-      height: 20px;
-      color: var(--gold);
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-    .contact-label {
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 0.25rem;
-    }
-    .contact-value {
-      font-size: 0.9rem;
-      color: var(--text);
-    }
-    .contact-value a {
-      color: var(--text);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .contact-value a:hover { color: var(--gold); }
-    .social-row {
-      display: flex;
-      gap: 1rem;
-      margin-top: 2rem;
-    }
-    .social-link {
-      width: 42px;
-      height: 42px;
-      border: 1px solid var(--glass-border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      color: var(--muted);
-      transition: border-color 0.2s, color 0.2s, background 0.2s;
-    }
-    .social-link:hover {
-      border-color: var(--purple-light);
-      color: var(--text);
-      background: rgba(124,58,237,0.1);
-    }
-    .social-link svg { width: 18px; height: 18px; }
-
-    /* ─── EVENTS ─── */
-    #events {
-      padding: 7rem 0;
-      background: var(--bg);
-    }
-    .events-header {
-      text-align: center;
-      margin-bottom: 4rem;
-    }
-    .events-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--glass-border);
-    }
-    .event-card {
-      background: var(--bg);
-      padding: 2.5rem;
-      transition: background 0.3s;
-      cursor: default;
-    }
-    .event-card:hover { background: var(--bg3); }
-    .event-num {
-      font-family: 'Poiret One', sans-serif;
-      font-size: 3rem;
-      letter-spacing: 0.1em;
-      color: rgba(124,58,237,0.2);
-      margin-bottom: 1rem;
-      display: block;
-    }
-    .event-card h3 {
-      font-size: 1.2rem;
-      letter-spacing: 0.08em;
-      margin-bottom: 0.75rem;
-    }
-    .event-card p {
-      font-size: 0.85rem;
-      color: var(--muted);
-      line-height: 1.8;
-    }
-
-    /* ─── CTA BANNER ─── */
-    #reserve {
-      padding: 7rem 0;
-      background: var(--bg2);
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    #reserve::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 800px;
-      height: 400px;
-      background: radial-gradient(ellipse, rgba(124,58,237,0.2) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    #reserve .section-title {
-      max-width: 600px;
-      margin: 0.75rem auto 2rem;
-    }
-    #reserve .section-subtitle {
-      margin: 0 auto 3rem;
-      text-align: center;
-    }
-    .reserve-actions {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    /* ─── FOOTER ─── */
-    footer {
-      background: #050410;
-      padding: 4rem 0 2rem;
-      border-top: 1px solid var(--glass-border);
-    }
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1.5fr 1fr 1fr 1fr;
-      gap: 3rem;
-      margin-bottom: 3rem;
-    }
-    .footer-brand .nav-logo {
-      display: inline-block;
-      margin-bottom: 1rem;
-    }
-    .footer-brand p {
-      font-size: 0.82rem;
-      color: var(--muted);
-      line-height: 1.8;
-      max-width: 240px;
-    }
-    .footer-col h4 {
-      font-size: 0.7rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 1.25rem;
-    }
-    .footer-col ul {
-      list-style: none;
-    }
-    .footer-col ul li {
-      margin-bottom: 0.6rem;
-    }
-    .footer-col ul li a {
-      font-size: 0.85rem;
-      color: var(--muted);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .footer-col ul li a:hover { color: var(--text); }
-    .footer-bottom {
-      border-top: 1px solid rgba(167,139,250,0.06);
-      padding-top: 1.5rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-    .footer-copy {
-      font-size: 0.72rem;
-      color: var(--muted);
-      letter-spacing: 0.08em;
-    }
-
-    /* ─── ANIMATIONS ON SCROLL ─── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
-
-    /* ─── MOBILE ─── */
-    @media (max-width: 900px) {
-      .nav-links, .nav-cta { display: none; }
-      .hamburger { display: flex; }
-      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
-      .services-grid { grid-template-columns: 1fr; }
-      .menu-grid { grid-template-columns: 1fr; gap: 3rem; }
-      .atmosphere-grid { grid-template-columns: 1fr 1fr; }
-      .atm-card.large { grid-column: span 2; min-height: 300px; }
-      .hours-layout { grid-template-columns: 1fr; gap: 3rem; }
-      .events-grid { grid-template-columns: 1fr; }
-      .footer-grid { grid-template-columns: 1fr 1fr; }
-      .atmosphere-header { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
-    }
-    @media (max-width: 600px) {
-      .atmosphere-grid { grid-template-columns: 1fr; }
-      .atm-card.large { grid-column: span 1; }
-      .footer-grid { grid-template-columns: 1fr; }
-      .about-stats { grid-template-columns: 1fr 1fr; }
-    }
-
-    /* ─── MOBILE NAV OPEN ─── */
+    /* ── MOBILE OVERLAY ── */
     .mobile-nav {
       display: none;
       flex-direction: column;
-      position: fixed;
-      inset: 0;
-      background: rgba(8,7,15,0.97);
+      position: fixed; inset: 0;
+      background: rgba(10,9,16,0.97);
       backdrop-filter: blur(20px);
       z-index: 99;
       align-items: center;
@@ -940,40 +126,705 @@
     .mobile-nav a {
       font-family: 'Poiret One', sans-serif;
       font-size: 2.5rem;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.12em;
       color: var(--text);
       text-decoration: none;
       transition: color 0.2s;
     }
     .mobile-nav a:hover { color: var(--gold); }
     .mobile-nav-close {
-      position: absolute;
-      top: 1.5rem;
-      right: 2rem;
-      background: none;
-      border: none;
-      color: var(--muted);
-      font-size: 2rem;
+      position: absolute; top: 1.5rem; right: 2rem;
+      background: none; border: none;
+      color: var(--muted); font-size: 2rem; cursor: pointer;
+    }
+
+    /* ── HERO ── */
+    #hero {
+      position: relative;
+      height: 100vh;
+      min-height: 640px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .hero-photo {
+      position: absolute; inset: 0;
+      background: url('https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1920,fit=crop/A85VROz7qKI3QoBE/kiwis_location-13-AQEe4lvel7hZVok6.jpg') center/cover no-repeat;
+    }
+    /* warm dark overlay that lets the photo breathe */
+    .hero-photo::after {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(to bottom, rgba(10,9,16,0.55) 0%, rgba(10,9,16,0.3) 50%, rgba(10,9,16,0.75) 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 1.5rem;
+    }
+
+    .hero-logo {
+      width: clamp(160px, 28vw, 280px);
+      margin-bottom: 2.2rem;
+      opacity: 0;
+      animation: fadeUp 0.9s ease forwards 0.3s;
+      filter: drop-shadow(0 4px 24px rgba(0,0,0,0.6));
+    }
+
+    .hero-tagline {
+      font-family: 'Didact Gothic', sans-serif;
+      font-size: clamp(0.75rem, 1.4vw, 0.9rem);
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: rgba(245,242,255,0.75);
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      animation: fadeUp 0.9s ease forwards 0.55s;
+    }
+    .hero-tagline span { color: var(--gold); }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      opacity: 0;
+      animation: fadeUp 0.9s ease forwards 0.75s;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: #0a0910;
+      padding: 0.85rem 2.2rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      font-family: 'Didact Gothic', sans-serif;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+      display: inline-block;
       cursor: pointer;
+    }
+    .btn-primary:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(212,175,55,0.35);
+    }
+
+    .btn-ghost {
+      border: 1px solid rgba(245,242,255,0.35);
+      color: var(--text);
+      padding: 0.85rem 2.2rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      font-family: 'Didact Gothic', sans-serif;
+      transition: border-color 0.2s, background 0.2s, transform 0.2s;
+      display: inline-block;
+      background: rgba(10,9,16,0.3);
+      backdrop-filter: blur(10px);
+    }
+    .btn-ghost:hover {
+      border-color: var(--purple-light);
+      background: rgba(103,61,230,0.2);
+      transform: translateY(-2px);
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2.5rem; left: 50%;
+      transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
+      color: rgba(245,242,255,0.5);
+      font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase;
+      opacity: 0;
+      animation: fadeUp 0.9s ease forwards 1s;
+      z-index: 2;
+    }
+    .scroll-line {
+      width: 1px; height: 38px;
+      background: linear-gradient(to bottom, rgba(212,175,55,0.8), transparent);
+      animation: scrollPulse 2.2s ease-in-out infinite;
+    }
+    @keyframes scrollPulse {
+      0%,100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── STRIP ── */
+    .strip {
+      background: var(--purple);
+      padding: 0.9rem 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .strip-inner {
+      display: inline-flex;
+      gap: 2.5rem;
+      animation: marquee 22s linear infinite;
+    }
+    .strip-item {
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.85);
+      flex-shrink: 0;
+    }
+    .strip-dot { color: var(--gold); }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ── SHARED LAYOUT ── */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+    section { position: relative; z-index: 1; }
+
+    .section-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.7rem;
+    }
+    .section-title {
+      font-size: clamp(2rem, 4.5vw, 3.2rem);
+      line-height: 1.1;
+      margin-bottom: 1.2rem;
+    }
+    .section-body {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.85;
+      max-width: 520px;
+    }
+
+    .reveal {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* ── ABOUT ── */
+    #about {
+      padding: 7rem 0;
+      background: var(--bg2);
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    /* photo collage */
+    .photo-collage {
+      position: relative;
+      height: 520px;
+    }
+    .collage-main {
+      position: absolute;
+      top: 0; left: 0;
+      width: 72%;
+      height: 82%;
+      object-fit: cover;
+      display: block;
+    }
+    .collage-accent {
+      position: absolute;
+      bottom: 0; right: 0;
+      width: 52%;
+      height: 54%;
+      object-fit: cover;
+      display: block;
+      border: 4px solid var(--bg2);
+    }
+    /* gold corner bracket */
+    .collage-bracket {
+      position: absolute;
+      bottom: 2rem; left: -1rem;
+      width: 50px; height: 50px;
+      border-bottom: 2px solid var(--gold);
+      border-left: 2px solid var(--gold);
+      pointer-events: none;
+    }
+
+    .about-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.55rem;
+      line-height: 1.55;
+      color: var(--text);
+      margin: 1.75rem 0;
+      padding-left: 1.5rem;
+      border-left: 2px solid var(--purple);
+    }
+    .about-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 2.5rem;
+    }
+    .stat {
+      padding: 1.25rem 1rem;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      text-align: center;
+    }
+    .stat-number {
+      font-family: 'Poiret One', sans-serif;
+      font-size: 2rem;
+      letter-spacing: 0.08em;
+      color: var(--gold);
+      display: block;
+    }
+    .stat-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 0.2rem;
+    }
+
+    /* ── FOOD GALLERY ── */
+    #gallery {
+      padding: 0;
+      background: var(--bg);
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: 280px 280px;
+      gap: 3px;
+    }
+    .gallery-item {
+      overflow: hidden;
+      position: relative;
+      cursor: default;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+      filter: brightness(0.9) saturate(1.05);
+    }
+    .gallery-item:hover img { transform: scale(1.06); filter: brightness(1) saturate(1.1); }
+
+    /* first item spans 2 rows */
+    .gallery-item.tall {
+      grid-row: span 2;
+    }
+    /* second item spans 2 cols */
+    .gallery-item.wide {
+      grid-column: span 2;
+    }
+
+    /* label on hover */
+    .gallery-item .overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,9,16,0.8) 0%, transparent 50%);
+      opacity: 0;
+      transition: opacity 0.3s;
+      display: flex;
+      align-items: flex-end;
+      padding: 1.25rem;
+    }
+    .gallery-item:hover .overlay { opacity: 1; }
+    .gallery-item .overlay span {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    /* ── SERVICES ── */
+    #services {
+      padding: 7rem 0;
+      background: var(--bg2);
+    }
+    .services-intro {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      margin-bottom: 4rem;
+    }
+    .services-photo {
+      position: relative;
+      overflow: hidden;
+      height: 420px;
+    }
+    .services-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.85) saturate(1.1);
+    }
+    .services-photo::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(103,61,230,0.25) 0%, transparent 60%);
+    }
+
+    .services-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--glass-border);
+    }
+    .service-card {
+      background: var(--bg2);
+      padding: 3rem 2.2rem;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s;
+    }
+    .service-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transition: transform 0.4s ease;
+      transform-origin: left;
+    }
+    .service-card:hover { background: var(--bg); }
+    .service-card:hover::after { transform: scaleX(1); }
+
+    .service-icon {
+      width: 44px; height: 44px;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+    .service-card h3 { font-size: 1.45rem; margin-bottom: 0.85rem; }
+    .service-card p { color: var(--muted); font-size: 0.88rem; line-height: 1.8; }
+
+    /* ── MENU ── */
+    #menu {
+      padding: 7rem 0;
+      background: var(--bg);
+    }
+    .menu-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .menu-photo-stack {
+      position: relative;
+      height: 580px;
+    }
+    .menu-photo-stack img {
+      position: absolute;
+      object-fit: cover;
+      display: block;
+    }
+    .menu-photo-stack .mp-back {
+      top: 0; left: 0;
+      width: 80%; height: 72%;
+    }
+    .menu-photo-stack .mp-front {
+      bottom: 0; right: 0;
+      width: 65%; height: 55%;
+      border: 4px solid var(--bg);
+    }
+    .menu-photo-stack .mp-small {
+      top: 55%; left: 0;
+      width: 34%; height: 34%;
+      border: 3px solid var(--bg);
+    }
+
+    .menu-content {}
+    .menu-category { margin-bottom: 3rem; }
+    .menu-cat-title {
+      font-family: 'Poiret One', sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid var(--glass-border);
+    }
+    .menu-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+      padding: 0.9rem 0;
+      border-bottom: 1px solid rgba(167,139,250,0.06);
+      transition: padding-left 0.25s;
+    }
+    .menu-item:hover { padding-left: 0.5rem; }
+    .menu-item-name { font-size: 0.9rem; margin-bottom: 0.2rem; }
+    .menu-item-desc { font-size: 0.75rem; color: var(--muted); }
+    .menu-item-price {
+      color: var(--gold);
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .menu-footnote {
+      margin-top: 0.75rem;
+      font-size: 0.73rem;
+      color: rgba(157,143,194,0.6);
+    }
+
+    /* ── EVENTS ── */
+    #events {
+      padding: 7rem 0;
+      background: var(--bg2);
+    }
+    .events-layout {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .events-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      background: var(--glass-border);
+    }
+    .event-card {
+      background: var(--bg2);
+      padding: 2.25rem 2rem;
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+      transition: background 0.3s;
+    }
+    .event-card:hover { background: var(--bg); }
+    .event-num {
+      font-family: 'Poiret One', sans-serif;
+      font-size: 2.2rem;
+      color: var(--purple-light);
+      opacity: 0.35;
+      line-height: 1;
+      flex-shrink: 0;
+      width: 2.5rem;
+    }
+    .event-card h3 { font-size: 1.15rem; margin-bottom: 0.5rem; }
+    .event-card p { font-size: 0.86rem; color: var(--muted); line-height: 1.8; }
+
+    .events-photo {
+      position: relative;
+      height: 460px;
+      overflow: hidden;
+    }
+    .events-photo img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.8) saturate(1.1);
+    }
+    .events-photo::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom left, rgba(103,61,230,0.2) 0%, transparent 60%);
+    }
+
+    /* ── HOURS + CONTACT ── */
+    #hours {
+      padding: 7rem 0;
+      background: var(--bg);
+    }
+    .hours-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 6rem;
+      align-items: start;
+    }
+    .hours-table { margin-top: 2rem; }
+    .hours-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(167,139,250,0.08);
+    }
+    .hours-day {
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .hours-time { font-size: 0.85rem; }
+    .badge {
+      display: inline-block;
+      font-size: 0.58rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.18rem 0.55rem;
+      background: rgba(212,175,55,0.1);
+      border: 1px solid rgba(212,175,55,0.25);
+      color: var(--gold);
+      margin-left: 0.65rem;
+    }
+    .kitchen-note {
+      margin-top: 1.25rem;
+      font-size: 0.72rem;
+      color: rgba(157,143,194,0.6);
+      letter-spacing: 0.06em;
+    }
+
+    .contact-card {
+      padding: 2.75rem;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(12px);
+    }
+    .contact-card h3 { font-size: 1.75rem; margin-bottom: 2rem; }
+    .contact-item {
+      display: flex; gap: 1rem; align-items: flex-start;
+      margin-bottom: 1.75rem;
+    }
+    .ci-icon {
+      width: 18px; height: 18px;
+      color: var(--gold); flex-shrink: 0; margin-top: 3px;
+    }
+    .ci-label {
+      font-size: 0.63rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 0.2rem;
+    }
+    .ci-value { font-size: 0.9rem; }
+    .ci-value a { color: var(--text); text-decoration: none; transition: color 0.2s; }
+    .ci-value a:hover { color: var(--gold); }
+
+    .social-row { display: flex; gap: 0.75rem; margin-top: 2rem; }
+    .social-link {
+      width: 40px; height: 40px;
+      border: 1px solid var(--glass-border);
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none; color: var(--muted);
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+    .social-link:hover {
+      border-color: var(--purple-light);
+      color: var(--text);
+      background: rgba(103,61,230,0.12);
+    }
+    .social-link svg { width: 17px; height: 17px; }
+
+    /* ── RESERVE CTA ── */
+    #reserve {
+      padding: 8rem 0;
+      background: var(--bg2);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    #reserve .bg-photo {
+      position: absolute; inset: 0;
+      background: url('https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1440,fit=crop/A85VROz7qKI3QoBE/kiwis_location-04-AQEe4lvelGtZGDRE.jpg') center/cover no-repeat;
+      opacity: 0.12;
+    }
+    #reserve .container { position: relative; z-index: 1; }
+    #reserve .section-title { max-width: 600px; margin: 0.75rem auto 1.25rem; }
+    #reserve .section-body { margin: 0 auto 3rem; text-align: center; }
+    .reserve-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #050410;
+      padding: 4rem 0 2rem;
+      border-top: 1px solid var(--glass-border);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+    .footer-logo img { height: 44px; margin-bottom: 1rem; filter: brightness(1.1); }
+    .footer-logo p { font-size: 0.82rem; color: var(--muted); line-height: 1.8; max-width: 220px; }
+    .footer-col h4 {
+      font-size: 0.68rem; letter-spacing: 0.24em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 1.2rem;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 0.55rem; }
+    .footer-col ul li a {
+      font-size: 0.85rem; color: var(--muted);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .footer-col ul li a:hover { color: var(--text); }
+    .footer-bottom {
+      border-top: 1px solid rgba(167,139,250,0.07);
+      padding-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap; gap: 0.75rem;
+    }
+    .footer-copy { font-size: 0.72rem; color: rgba(157,143,194,0.55); letter-spacing: 0.06em; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .about-grid, .services-intro, .menu-layout, .events-layout, .hours-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .photo-collage, .menu-photo-stack, .services-photo, .events-photo { height: 320px; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(3, 220px); }
+      .gallery-item.tall { grid-row: span 1; }
+      .gallery-item.wide { grid-column: span 2; }
+      .services-cards { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .about-stats { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 560px) {
+      .gallery-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
+      .gallery-item.wide { grid-column: span 1; }
+      .gallery-item { height: 220px; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .about-stats { grid-template-columns: repeat(3, 1fr); }
+      .menu-photo-stack { display: none; }
     }
   </style>
 </head>
 <body>
 
-  <!-- MOBILE NAV OVERLAY -->
+  <!-- MOBILE NAV -->
   <div class="mobile-nav" id="mobileNav">
-    <button class="mobile-nav-close" id="mobileNavClose" aria-label="Menü schließen">✕</button>
-    <a href="#about" onclick="closeMobileNav()">Über uns</a>
-    <a href="#services" onclick="closeMobileNav()">Konzept</a>
-    <a href="#menu" onclick="closeMobileNav()">Speisekarte</a>
-    <a href="#events" onclick="closeMobileNav()">Events</a>
-    <a href="#hours" onclick="closeMobileNav()">Kontakt</a>
-    <a href="tel:+4969210098790" class="btn-primary" style="font-family:'Poiret One',sans-serif;font-size:1rem;" onclick="closeMobileNav()">Reservieren</a>
+    <button class="mobile-nav-close" id="mobileNavClose" aria-label="Schließen">✕</button>
+    <a href="#about"    onclick="closeMob()">Über uns</a>
+    <a href="#services" onclick="closeMob()">Konzept</a>
+    <a href="#menu"     onclick="closeMob()">Speisekarte</a>
+    <a href="#events"   onclick="closeMob()">Events</a>
+    <a href="#hours"    onclick="closeMob()">Kontakt</a>
+    <a href="tel:+4969210098790" onclick="closeMob()" style="color:var(--gold);font-size:1.4rem;">Reservieren</a>
   </div>
 
   <!-- NAV -->
   <nav id="navbar">
-    <a href="#" class="nav-logo">KIW<span>I</span>S</a>
+    <a href="#" class="nav-logo">
+      <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,fit=crop/A85VROz7qKI3QoBE/kiwis_logo-A85VRxyXynIKkqQK.png"
+           alt="KIWIS Frankfurt" />
+    </a>
     <ul class="nav-links">
       <li><a href="#about">Über uns</a></li>
       <li><a href="#services">Konzept</a></li>
@@ -989,17 +840,15 @@
 
   <!-- HERO -->
   <section id="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-grid"></div>
-    <div class="hero-circle-1"></div>
-    <div class="hero-circle-2"></div>
+    <div class="hero-photo"></div>
     <div class="hero-content">
-      <p class="hero-eyebrow">Frankfurt am Main · Schillerstraße 10</p>
-      <h1 class="hero-title">KIW<span class="dot">I</span>S</h1>
-      <p class="hero-tagline">Restaurant &nbsp;·&nbsp; Bar &nbsp;·&nbsp; Events</p>
+      <img class="hero-logo"
+           src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,fit=crop/A85VROz7qKI3QoBE/kiwis_logo-A85VRxyXynIKkqQK.png"
+           alt="KIWIS Frankfurt" />
+      <p class="hero-tagline">Restaurant <span>·</span> Bar <span>·</span> Events</p>
       <div class="hero-actions">
-        <a href="#reserve" class="btn-primary">Tisch reservieren</a>
-        <a href="#menu" class="btn-ghost">Speisekarte entdecken</a>
+        <a href="tel:+4969210098790" class="btn-primary">Tisch reservieren</a>
+        <a href="#menu" class="btn-ghost">Speisekarte</a>
       </div>
     </div>
     <div class="scroll-hint">
@@ -1011,39 +860,20 @@
   <!-- STRIP -->
   <div class="strip">
     <div class="strip-inner">
-      <span class="strip-item">Restaurant</span>
-      <span class="strip-dot">✦</span>
-      <span class="strip-item">Bar</span>
-      <span class="strip-dot">✦</span>
-      <span class="strip-item">Events</span>
-      <span class="strip-dot">✦</span>
-      <span class="strip-item">Frühstück</span>
-      <span class="strip-dot">✦</span>
-      <span class="strip-item">Cocktails</span>
-      <span class="strip-dot">✦</span>
-      <span class="strip-item">Frankfurt</span>
-      <span class="strip-dot">✦</span>
-      <span class="strip-item">Gute Vibes</span>
-      <span class="strip-dot">✦</span>
-      <span class="strip-item">Täglich ab 10:00</span>
-      <span class="strip-dot">✦</span>
-      <!-- duplicate for seamless loop -->
-      <span class="strip-item">Restaurant</span>
-      <span class="strip-dot">✦</span>
-      <span class="strip-item">Bar</span>
-      <span class="strip-dot">✦</span>
-      <span class="strip-item">Events</span>
-      <span class="strip-dot">✦</span>
-      <span class="strip-item">Frühstück</span>
-      <span class="strip-dot">✦</span>
-      <span class="strip-item">Cocktails</span>
-      <span class="strip-dot">✦</span>
-      <span class="strip-item">Frankfurt</span>
-      <span class="strip-dot">✦</span>
-      <span class="strip-item">Gute Vibes</span>
-      <span class="strip-dot">✦</span>
-      <span class="strip-item">Täglich ab 10:00</span>
-      <span class="strip-dot">✦</span>
+      <span class="strip-item">Restaurant</span><span class="strip-dot"> ✦ </span>
+      <span class="strip-item">Bar</span><span class="strip-dot"> ✦ </span>
+      <span class="strip-item">Events</span><span class="strip-dot"> ✦ </span>
+      <span class="strip-item">Cocktails</span><span class="strip-dot"> ✦ </span>
+      <span class="strip-item">Frühstück bis Mitternacht</span><span class="strip-dot"> ✦ </span>
+      <span class="strip-item">Frankfurt Innenstadt</span><span class="strip-dot"> ✦ </span>
+      <span class="strip-item">Täglich ab 10:00</span><span class="strip-dot"> ✦ </span>
+      <span class="strip-item">Restaurant</span><span class="strip-dot"> ✦ </span>
+      <span class="strip-item">Bar</span><span class="strip-dot"> ✦ </span>
+      <span class="strip-item">Events</span><span class="strip-dot"> ✦ </span>
+      <span class="strip-item">Cocktails</span><span class="strip-dot"> ✦ </span>
+      <span class="strip-item">Frühstück bis Mitternacht</span><span class="strip-dot"> ✦ </span>
+      <span class="strip-item">Frankfurt Innenstadt</span><span class="strip-dot"> ✦ </span>
+      <span class="strip-item">Täglich ab 10:00</span><span class="strip-dot"> ✦ </span>
     </div>
   </div>
 
@@ -1052,34 +882,38 @@
     <div class="container">
       <div class="about-grid">
 
-        <div class="about-text reveal">
-          <p class="section-label">Über Kiwis</p>
+        <!-- photo collage -->
+        <div class="photo-collage reveal">
+          <img class="collage-main"
+               src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1024,fit=crop/A85VROz7qKI3QoBE/_dsc6153-BKyc41zMyBmHimIt.jpg"
+               alt="KIWIS Atmosphäre" loading="lazy" />
+          <img class="collage-accent"
+               src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=768,fit=crop/A85VROz7qKI3QoBE/pink_pornstar-1-96w7Z9l7IZRatSiA.jpg"
+               alt="KIWIS Cocktail" loading="lazy" />
+          <div class="collage-bracket"></div>
+        </div>
+
+        <!-- text -->
+        <div class="reveal reveal-delay-1">
+          <p class="section-label">Über KIWIS</p>
           <h2 class="section-title">Mehr als ein<br>Restaurant</h2>
-          <p class="section-subtitle">Mitten im Herzen Frankfurts, zwischen Börse und Zeil, ist KIWIS ein Ort für Menschen, die mehr wollen als nur essen. Gute Küche, handgefertigte Cocktails und eine Atmosphäre, in der man den Alltag vergisst.</p>
+          <blockquote class="about-quote">
+            "Gute Vibes und Urlaubsatmosphäre – mitten im Herzen Frankfurts."
+          </blockquote>
+          <p class="section-body">Zwischen Börse und Zeil, in der Schillerstraße 10, ist KIWIS mehr als ein Ort zum Essen. Wir verbinden moderne Küche, handgefertigte Cocktails und ein Flair, das den Alltag vergessen lässt – von morgens bis tief in die Nacht.</p>
           <div class="about-stats">
             <div class="stat reveal reveal-delay-1">
-              <span class="stat-number">17.5h</span>
-              <span class="stat-label">Täglich geöffnet</span>
+              <span class="stat-number">17h</span>
+              <span class="stat-label">Täglich offen</span>
             </div>
             <div class="stat reveal reveal-delay-2">
               <span class="stat-number">3</span>
-              <span class="stat-label">Konzepte in einem</span>
+              <span class="stat-label">Konzepte</span>
             </div>
             <div class="stat reveal reveal-delay-3">
-              <span class="stat-number">∞</span>
-              <span class="stat-label">Gute Vibes</span>
-            </div>
-            <div class="stat reveal reveal-delay-1">
               <span class="stat-number">10+</span>
-              <span class="stat-label">Craft Cocktails</span>
+              <span class="stat-label">Cocktails</span>
             </div>
-          </div>
-        </div>
-
-        <div class="about-visual reveal reveal-delay-2">
-          <div class="about-card">
-            <p class="about-quote">"Eine Atmosphäre wie Urlaub – mitten in Frankfurt."</p>
-            <p class="about-quote-author">— Das KIWIS Versprechen</p>
           </div>
         </div>
 
@@ -1087,41 +921,86 @@
     </div>
   </section>
 
+  <!-- FOOD GALLERY -->
+  <section id="gallery">
+    <div class="gallery-grid">
+
+      <div class="gallery-item tall reveal">
+        <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1024,fit=crop/A85VROz7qKI3QoBE/_dsc6407-X6EgaCdandDul09W.jpg"
+             alt="KIWIS Speisen" loading="lazy" />
+        <div class="overlay"><span>Küche</span></div>
+      </div>
+
+      <div class="gallery-item reveal reveal-delay-1">
+        <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=768,fit=crop/A85VROz7qKI3QoBE/_dsc1431-E5HKwvWlCSvfOAJa.jpg"
+             alt="KIWIS Food" loading="lazy" />
+        <div class="overlay"><span>Genuss</span></div>
+      </div>
+
+      <div class="gallery-item reveal reveal-delay-2">
+        <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=768,fit=crop/A85VROz7qKI3QoBE/_dsc1435-rumvNvXSzWOZaCQ1.jpg"
+             alt="KIWIS Food" loading="lazy" />
+        <div class="overlay"><span>Frisch</span></div>
+      </div>
+
+      <div class="gallery-item reveal reveal-delay-1">
+        <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=768,fit=crop/A85VROz7qKI3QoBE/_dsc1438-UP9GBYK1rXB3qSqr.jpg"
+             alt="KIWIS Food" loading="lazy" />
+        <div class="overlay"><span>Kreativ</span></div>
+      </div>
+
+      <div class="gallery-item wide reveal reveal-delay-2">
+        <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1440,fit=crop/A85VROz7qKI3QoBE/_dsc6215-Ud9D53hCvaAT7cII.jpg"
+             alt="KIWIS Bar" loading="lazy" />
+        <div class="overlay"><span>Bar &amp; Cocktails</span></div>
+      </div>
+
+      <div class="gallery-item reveal reveal-delay-3">
+        <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=768,fit=crop/A85VROz7qKI3QoBE/_dsc1440-r1331JhK4NXOve7g.jpg"
+             alt="KIWIS Food" loading="lazy" />
+        <div class="overlay"><span>Highlights</span></div>
+      </div>
+
+    </div>
+  </section>
+
   <!-- SERVICES -->
   <section id="services">
     <div class="container">
-      <div class="services-header reveal">
-        <p class="section-label">Was wir bieten</p>
-        <h2 class="section-title">Drei Erlebnisse,<br>ein Ort</h2>
+      <div class="services-intro">
+        <div class="reveal">
+          <p class="section-label">Was wir bieten</p>
+          <h2 class="section-title">Drei Erlebnisse,<br>ein Ort</h2>
+          <p class="section-body">KIWIS vereint modernes Restaurant, lebendige Bar und vielseitigen Eventbereich unter einem Dach – und das täglich bis tief in die Nacht.</p>
+        </div>
+        <div class="services-photo reveal reveal-delay-1">
+          <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1024,fit=crop/A85VROz7qKI3QoBE/_dsc6444-btSmxOsxqaBFBU4O.jpg"
+               alt="KIWIS Frankfurt" loading="lazy" />
+        </div>
       </div>
-    </div>
-    <div class="container">
-      <div class="services-grid">
 
+      <div class="services-cards">
         <div class="service-card reveal">
           <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 8.25v-1.5m0 1.5c-1.355 0-2.697.056-4.024.166C6.845 8.51 6 9.473 6 10.608v2.513m6-4.871c1.355 0 2.697.056 4.024.166C17.155 8.51 18 9.473 18 10.608v2.513M15 20.488l-.023.032A1.5 1.5 0 0113.5 21h-3a1.5 1.5 0 01-1.477-1.48L9 20.488m6 0a48.667 48.667 0 01-6 0m6 0v-2.625c0-.621-.504-1.125-1.125-1.125H10.125c-.621 0-1.125.504-1.125 1.125v2.625M3.75 10.5h16.5" />
           </svg>
           <h3>Restaurant</h3>
-          <p>Moderne Küche mit saisonalen Zutaten. Frühstück, Mittagstisch und Abendessen in einer stilvollen Umgebung. Die Küche ist täglich bis 02:00 Uhr geöffnet.</p>
+          <p>Moderne Küche mit saisonalen Zutaten. Frühstück, Mittagstisch und Dinner in stilvollem Ambiente. Küche täglich bis 02:00 Uhr.</p>
         </div>
-
         <div class="service-card reveal reveal-delay-1">
           <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
             <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714a2.25 2.25 0 001.5 2.121m-6 0a2.25 2.25 0 004.5 0m-4.5 0H6.375a1.875 1.875 0 01-1.875-1.875v-1.5C4.5 7.284 6.75 6 9.75 3.104z" />
           </svg>
           <h3>Bar</h3>
-          <p>Handgefertigte Cocktails, erlesene Weine und eine Bar-Atmosphäre, die Frankfurt so nicht kennt. Von entspannt bis ausgelassen – alles ist möglich.</p>
+          <p>Handgefertigte Cocktails, exzellente Weine und eine Bar-Atmosphäre, die Frankfurt so nicht kennt. Von entspannt bis ausgelassen.</p>
         </div>
-
         <div class="service-card reveal reveal-delay-2">
           <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
             <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
           </svg>
           <h3>Events</h3>
-          <p>Von privaten Feiern bis zu Firmenveranstaltungen – KIWIS bietet flexible Räumlichkeiten und ein eingespieltes Team für unvergessliche Momente.</p>
+          <p>Private Feiern, Firmenevents und besondere Anlässe. Flexible Bereiche, individuelles Catering und ein Team, das mitdenkt.</p>
         </div>
-
       </div>
     </div>
   </section>
@@ -1129,132 +1008,62 @@
   <!-- MENU -->
   <section id="menu">
     <div class="container">
-      <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3.5rem;" class="reveal">
-        <div>
-          <p class="section-label">Kulinarik</p>
-          <h2 class="section-title">Unsere Highlights</h2>
-        </div>
-        <a href="#reserve" class="btn-ghost" style="white-space:nowrap;">Volle Karte auf Anfrage</a>
+      <div style="margin-bottom:3.5rem;" class="reveal">
+        <p class="section-label">Kulinarik</p>
+        <h2 class="section-title">Unsere Highlights</h2>
       </div>
-      <div class="menu-grid">
-        <div class="menu-category reveal">
-          <p class="menu-category-title">Frühstück & Brunch</p>
-          <div class="menu-item">
-            <div class="menu-item-info">
-              <p class="menu-item-name">Avocado Toast</p>
-              <p class="menu-item-desc">Sauerteig, Burrata, getrocknete Tomaten</p>
-            </div>
-            <span class="menu-item-price">12,90 €</span>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-info">
-              <p class="menu-item-name">Eggs Benedict</p>
-              <p class="menu-item-desc">Pochierte Eier, Hollandaise, Brioche</p>
-            </div>
-            <span class="menu-item-price">14,50 €</span>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-info">
-              <p class="menu-item-name">KIWIS Bowl</p>
-              <p class="menu-item-desc">Granola, Joghurt, saisonale Früchte</p>
-            </div>
-            <span class="menu-item-price">10,90 €</span>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-info">
-              <p class="menu-item-name">French Toast</p>
-              <p class="menu-item-desc">Brioche, Ahornsirup, Frischkäse, Beeren</p>
-            </div>
-            <span class="menu-item-price">11,50 €</span>
-          </div>
+      <div class="menu-layout">
+
+        <!-- photo stack -->
+        <div class="menu-photo-stack reveal">
+          <img class="mp-back"
+               src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1024,fit=crop/A85VROz7qKI3QoBE/_dsc1444-RSh4yEKsHpYmHnMB.jpg"
+               alt="KIWIS Essen" loading="lazy" />
+          <img class="mp-front"
+               src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=768,fit=crop/A85VROz7qKI3QoBE/_dsc1449-VfEN7Rn359X52A1N.jpg"
+               alt="KIWIS Essen" loading="lazy" />
+          <img class="mp-small"
+               src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,fit=crop/A85VROz7qKI3QoBE/_dsc1445-xat46lseYear07oj.jpg"
+               alt="KIWIS Essen" loading="lazy" />
         </div>
 
-        <div class="menu-category reveal reveal-delay-1">
-          <p class="menu-category-title">Bar & Cocktails</p>
-          <div class="menu-item">
-            <div class="menu-item-info">
-              <p class="menu-item-name">KIWIS Sour</p>
-              <p class="menu-item-desc">Kiwi, Gin, Limette, Rosmarin, Egg White</p>
+        <!-- menu items -->
+        <div class="reveal reveal-delay-1">
+          <div class="menu-category">
+            <p class="menu-cat-title">Frühstück &amp; Brunch</p>
+            <div class="menu-item">
+              <div><p class="menu-item-name">Avocado Toast</p><p class="menu-item-desc">Sauerteig, Burrata, getrocknete Tomaten</p></div>
+              <span class="menu-item-price">12,90 €</span>
             </div>
-            <span class="menu-item-price">13,00 €</span>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-info">
-              <p class="menu-item-name">Purple Haze</p>
-              <p class="menu-item-desc">Vodka, Crème de Mûre, Passion Fruit</p>
+            <div class="menu-item">
+              <div><p class="menu-item-name">Eggs Benedict</p><p class="menu-item-desc">Pochierte Eier, Hollandaise, Brioche</p></div>
+              <span class="menu-item-price">14,50 €</span>
             </div>
-            <span class="menu-item-price">13,00 €</span>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-info">
-              <p class="menu-item-name">Espresso Martini</p>
-              <p class="menu-item-desc">Vodka, Kaffeelikör, frischer Espresso</p>
+            <div class="menu-item">
+              <div><p class="menu-item-name">KIWIS Bowl</p><p class="menu-item-desc">Granola, Joghurt, saisonale Früchte</p></div>
+              <span class="menu-item-price">10,90 €</span>
             </div>
-            <span class="menu-item-price">14,00 €</span>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-info">
-              <p class="menu-item-name">Aperol Spritz</p>
-              <p class="menu-item-desc">Aperol, Prosecco, Orangenscheibe</p>
+            <div class="menu-item">
+              <div><p class="menu-item-name">French Toast</p><p class="menu-item-desc">Brioche, Ahornsirup, Frischkäse, Beeren</p></div>
+              <span class="menu-item-price">11,50 €</span>
             </div>
-            <span class="menu-item-price">10,00 €</span>
           </div>
-          <p class="menu-note">* Alle Preise inklusive MwSt. Vollständige Speise- und Getränkekarte auf Anfrage oder vor Ort.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ATMOSPHERE -->
-  <section id="atmosphere">
-    <div class="container">
-      <div class="atmosphere-header reveal">
-        <div>
-          <p class="section-label">Atmosphäre</p>
-          <h2 class="section-title">Erlebe KIWIS</h2>
-        </div>
-        <a href="https://www.instagram.com/kiwis_frankfurt" target="_blank" rel="noopener" class="btn-ghost">@kiwis_frankfurt</a>
-      </div>
-    </div>
-    <div class="container">
-      <div class="atmosphere-grid">
-
-        <div class="atm-card large reveal">
-          <div class="shape shape-1"></div>
-          <div class="shape shape-2"></div>
-          <div class="atm-content">
-            <p class="atm-tag">Abendstimmung</p>
-            <h3 class="atm-title">Where Frankfurt<br>comes alive</h3>
+          <div class="menu-category">
+            <p class="menu-cat-title">Signature Cocktails</p>
+            <div class="menu-item">
+              <div><p class="menu-item-name">KIWIS Sour</p><p class="menu-item-desc">Kiwi, Gin, Limette, Rosmarin, Egg White</p></div>
+              <span class="menu-item-price">13,00 €</span>
+            </div>
+            <div class="menu-item">
+              <div><p class="menu-item-name">Pink Pornstar</p><p class="menu-item-desc">Vodka, Passionsfrucht, Prosecco, Vanille</p></div>
+              <span class="menu-item-price">13,00 €</span>
+            </div>
+            <div class="menu-item">
+              <div><p class="menu-item-name">Espresso Martini</p><p class="menu-item-desc">Vodka, Kaffeelikör, frischer Espresso</p></div>
+              <span class="menu-item-price">14,00 €</span>
+            </div>
           </div>
-        </div>
-
-        <div class="atm-card reveal reveal-delay-1">
-          <div class="atm-content">
-            <p class="atm-tag">Bar</p>
-            <h3 class="atm-title">Craft Cocktails</h3>
-          </div>
-        </div>
-
-        <div class="atm-card reveal reveal-delay-2">
-          <div class="shape shape-1"></div>
-          <div class="atm-content">
-            <p class="atm-tag">Kulinarik</p>
-            <h3 class="atm-title">Modern Cuisine</h3>
-          </div>
-        </div>
-
-        <div class="atm-card reveal reveal-delay-1">
-          <div class="atm-content">
-            <p class="atm-tag">Interieur</p>
-            <h3 class="atm-title">Stil trifft<br>Gemütlichkeit</h3>
-          </div>
-        </div>
-
-        <div class="atm-card reveal reveal-delay-2">
-          <div class="atm-content">
-            <p class="atm-tag">Events</p>
-            <h3 class="atm-title">Private Feiern</h3>
-          </div>
+          <p class="menu-footnote">Vollständige Speise- und Getränkekarte vor Ort oder auf Anfrage.</p>
         </div>
 
       </div>
@@ -1264,27 +1073,41 @@
   <!-- EVENTS -->
   <section id="events">
     <div class="container">
-      <div class="events-header reveal">
-        <p class="section-label">Veranstaltungen</p>
-        <h2 class="section-title">KIWIS für<br>besondere Momente</h2>
-        <p class="section-subtitle" style="margin:0 auto;">Ob Geburtstag, Firmenfeier oder exklusives Get-together – wir gestalten Ihren Abend genau nach Ihren Wünschen.</p>
-      </div>
-      <div class="events-grid">
-        <div class="event-card reveal">
-          <span class="event-num">01</span>
-          <h3>Private Feiern</h3>
-          <p>Geburtstage, Jubiläen, Reunions – exklusive Bereiche für Gruppen ab 10 Personen. Individuell gestaltetes Catering und Getränkepakete.</p>
+      <div class="events-layout">
+
+        <div>
+          <p class="section-label reveal">Veranstaltungen</p>
+          <h2 class="section-title reveal">KIWIS für<br>besondere Momente</h2>
+          <div class="events-cards">
+            <div class="event-card reveal">
+              <span class="event-num">01</span>
+              <div>
+                <h3>Private Feiern</h3>
+                <p>Geburtstage, Jubiläen, Reunions. Exklusive Bereiche für Gruppen ab 10 Personen mit individuellem Catering.</p>
+              </div>
+            </div>
+            <div class="event-card reveal reveal-delay-1">
+              <span class="event-num">02</span>
+              <div>
+                <h3>Firmenevents</h3>
+                <p>Business Lunches, After-Work-Gatherings und Firmenveranstaltungen. Flexible Raumkonzepte bis 80 Gäste.</p>
+              </div>
+            </div>
+            <div class="event-card reveal reveal-delay-2">
+              <span class="event-num">03</span>
+              <div>
+                <h3>Special Nights</h3>
+                <p>Themenabende, Live-Musik und exklusive Cocktail-Tastings. Folgen Sie uns auf Instagram für Updates.</p>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="event-card reveal reveal-delay-1">
-          <span class="event-num">02</span>
-          <h3>Firmenevents</h3>
-          <p>Business Lunches, After-Work-Gatherings und Firmenveranstaltungen. Flexible Raumkonzepte und professioneller Service für bis zu 80 Gäste.</p>
+
+        <div class="events-photo reveal reveal-delay-1">
+          <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1024,fit=crop/A85VROz7qKI3QoBE/_dsc7511-daQNs5qEgfOmLwOW.jpg"
+               alt="KIWIS Events" loading="lazy" />
         </div>
-        <div class="event-card reveal reveal-delay-2">
-          <span class="event-num">03</span>
-          <h3>Special Nights</h3>
-          <p>Regelmäßige Themenabende, Live-Musik und exklusive Cocktail-Tastings. Folgen Sie uns auf Instagram, um nichts zu verpassen.</p>
-        </div>
+
       </div>
     </div>
   </section>
@@ -1292,18 +1115,18 @@
   <!-- HOURS + CONTACT -->
   <section id="hours">
     <div class="container">
-      <div class="hours-layout">
+      <div class="hours-grid">
         <div>
           <p class="section-label reveal">Öffnungszeiten</p>
           <h2 class="section-title reveal">Wir sind<br>für Sie da</h2>
           <div class="hours-table">
             <div class="hours-row reveal">
-              <span class="hours-day">Montag – Donnerstag</span>
+              <span class="hours-day">Mo – Do</span>
               <span class="hours-time">10:00 – 02:00</span>
             </div>
             <div class="hours-row reveal reveal-delay-1">
-              <span class="hours-day">Freitag & Samstag</span>
-              <span class="hours-time">10:00 – 03:30 <span class="hours-badge">Late Night</span></span>
+              <span class="hours-day">Fr &amp; Sa</span>
+              <span class="hours-time">10:00 – 03:30 <span class="badge">Late Night</span></span>
             </div>
             <div class="hours-row reveal reveal-delay-2">
               <span class="hours-day">Sonntag</span>
@@ -1313,82 +1136,57 @@
           <p class="kitchen-note reveal">Küche täglich bis 02:00 Uhr geöffnet.</p>
         </div>
 
-        <div class="contact-block reveal">
+        <div class="contact-card reveal">
           <h3>Besuchen Sie uns</h3>
-
           <div class="contact-item">
-            <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/>
-              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/>
-            </svg>
+            <svg class="ci-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
             <div>
-              <p class="contact-label">Adresse</p>
-              <p class="contact-value">Schillerstraße 10<br>60313 Frankfurt am Main</p>
+              <p class="ci-label">Adresse</p>
+              <p class="ci-value">Schillerstraße 10<br>60313 Frankfurt am Main</p>
             </div>
           </div>
-
           <div class="contact-item">
-            <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/>
-            </svg>
+            <svg class="ci-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
             <div>
-              <p class="contact-label">Telefon</p>
-              <p class="contact-value">
+              <p class="ci-label">Telefon</p>
+              <p class="ci-value">
                 <a href="tel:+4969210098790">069 – 21 00 98 79</a><br>
                 <a href="tel:+4917337032420">+49 173 370 32 42</a>
               </p>
             </div>
           </div>
-
           <div class="contact-item">
-            <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/>
-            </svg>
+            <svg class="ci-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
             <div>
-              <p class="contact-label">E-Mail</p>
-              <p class="contact-value"><a href="mailto:info@kiwis-frankfurt.de">info@kiwis-frankfurt.de</a></p>
+              <p class="ci-label">E-Mail</p>
+              <p class="ci-value"><a href="mailto:info@kiwis-frankfurt.de">info@kiwis-frankfurt.de</a></p>
             </div>
           </div>
-
           <div class="social-row">
-            <!-- Instagram -->
             <a href="https://www.instagram.com/kiwis_frankfurt" target="_blank" rel="noopener" class="social-link" aria-label="Instagram">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                <circle cx="12" cy="12" r="3.5"/>
-                <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/>
-              </svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="3.5"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/></svg>
             </a>
-            <!-- Facebook -->
             <a href="https://www.facebook.com/kiwisfrankfurt" target="_blank" rel="noopener" class="social-link" aria-label="Facebook">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
-              </svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
             </a>
-            <!-- TikTok -->
             <a href="https://www.tiktok.com/@kiwis_frankfurt" target="_blank" rel="noopener" class="social-link" aria-label="TikTok">
-              <svg viewBox="0 0 24 24" fill="currentColor" stroke="none">
-                <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V9.17a8.16 8.16 0 004.77 1.52V7.25a4.85 4.85 0 01-1-.56z"/>
-              </svg>
+              <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V9.17a8.16 8.16 0 004.77 1.52V7.25a4.85 4.85 0 01-1-.56z"/></svg>
             </a>
           </div>
         </div>
-
       </div>
     </div>
   </section>
 
   <!-- RESERVE CTA -->
   <section id="reserve">
+    <div class="bg-photo"></div>
     <div class="container">
       <p class="section-label reveal">Reservierung</p>
-      <h2 class="section-title reveal">Bereit für<br>einen besonderen Abend?</h2>
-      <p class="section-subtitle reveal">Reservieren Sie Ihren Tisch direkt per Telefon oder E-Mail. Für Gruppen ab 10 Personen erstellen wir gerne ein individuelles Angebot.</p>
+      <h2 class="section-title reveal">Bereit für einen<br>besonderen Abend?</h2>
+      <p class="section-body reveal">Reservieren Sie Ihren Tisch per Telefon oder E-Mail.<br>Für Gruppen ab 10 Personen erstellen wir gerne ein individuelles Angebot.</p>
       <div class="reserve-actions reveal">
-        <a href="tel:+4969210098790" class="btn-primary">
-          <svg style="display:inline;width:14px;height:14px;margin-right:8px;vertical-align:middle;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.01 2.18C-.01.98.92 0 2.1 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.85-.45a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-          069 – 21 00 98 79
-        </a>
+        <a href="tel:+4969210098790" class="btn-primary">069 – 21 00 98 79</a>
         <a href="mailto:info@kiwis-frankfurt.de" class="btn-ghost">Per E-Mail anfragen</a>
       </div>
     </div>
@@ -1398,8 +1196,9 @@
   <footer>
     <div class="container">
       <div class="footer-grid">
-        <div class="footer-brand">
-          <a href="#" class="nav-logo">KIW<span>I</span>S</a>
+        <div class="footer-logo">
+          <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,fit=crop/A85VROz7qKI3QoBE/kiwis_logo-A85VRxyXynIKkqQK.png"
+               alt="KIWIS Frankfurt" />
           <p>Restaurant · Bar · Events<br>im Herzen Frankfurts.<br>Täglich ab 10 Uhr geöffnet.</p>
         </div>
         <div class="footer-col">
@@ -1420,7 +1219,7 @@
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Social</h4>
+          <h4>Social Media</h4>
           <ul>
             <li><a href="https://www.instagram.com/kiwis_frankfurt" target="_blank" rel="noopener">Instagram</a></li>
             <li><a href="https://www.facebook.com/kiwisfrankfurt" target="_blank" rel="noopener">Facebook</a></li>
@@ -1430,44 +1229,39 @@
       </div>
       <div class="footer-bottom">
         <p class="footer-copy">© 2025 KIWIS Frankfurt. Alle Rechte vorbehalten.</p>
-        <p class="footer-copy" style="color:rgba(157,143,194,0.4);">Schillerstraße 10 · 60313 Frankfurt am Main</p>
+        <p class="footer-copy">Schillerstraße 10 · 60313 Frankfurt am Main</p>
       </div>
     </div>
   </footer>
 
   <script>
-    // Nav scroll effect
-    const navbar = document.getElementById('navbar');
+    // Nav scroll
+    const nav = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 60);
+      nav.classList.toggle('scrolled', window.scrollY > 50);
     }, { passive: true });
 
     // Mobile nav
-    const hamburger = document.getElementById('hamburger');
-    const mobileNav = document.getElementById('mobileNav');
-    const mobileNavClose = document.getElementById('mobileNavClose');
-    hamburger.addEventListener('click', () => mobileNav.classList.add('open'));
-    mobileNavClose.addEventListener('click', () => mobileNav.classList.remove('open'));
-    function closeMobileNav() { mobileNav.classList.remove('open'); }
+    document.getElementById('hamburger').addEventListener('click', () => {
+      document.getElementById('mobileNav').classList.add('open');
+    });
+    document.getElementById('mobileNavClose').addEventListener('click', () => {
+      document.getElementById('mobileNav').classList.remove('open');
+    });
+    function closeMob() { document.getElementById('mobileNav').classList.remove('open'); }
 
     // Scroll reveal
-    const revealEls = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-          observer.unobserve(e.target);
-        }
+        if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
       });
-    }, { threshold: 0.12 });
-    revealEls.forEach(el => observer.observe(el));
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // Respect prefers-reduced-motion
+    // Reduced motion
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       document.querySelectorAll('.reveal').forEach(el => {
-        el.style.opacity = '1';
-        el.style.transform = 'none';
-        el.style.transition = 'none';
+        el.style.opacity = '1'; el.style.transform = 'none'; el.style.transition = 'none';
       });
     }
   </script>
